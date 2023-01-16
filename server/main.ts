@@ -32,14 +32,14 @@ app.use(express.json());
 // app.use("/todo", todoRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hi");
+	res.send("Hi");
 });
 
 app.use((req, res) => {
-  res.sendFile(path.resolve("./public/404.html"));
+	res.sendFile(path.resolve("./public/404.html"));
 });
 
 const port = 8080;
 app.listen(port, () => {
-  logger.info(`App listening on http://localhost:${port}`);
+	logger.info(`App listening on http://localhost:${port}`);
 });
