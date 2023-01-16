@@ -1,10 +1,28 @@
 import { Knex } from "knex";
-// import { InvalidInfoError } from "../utils/error";
+import { ApplicationError, InvalidInfoError } from "../utils/error";
 import { checkPassword, hashPassword } from "../utils/hash";
-// import { Customer } from "./model";
+import { Customer } from "./model";
 
-export class CustomerService {
+export class CustomersService {
 	constructor(private dbClient: Knex) {}
+
+	async getCustomer(name: string) {
+		const getCustomer = await this.dbClient("customers")
+			.select("name")
+			.where({ name: name });
+
+		return getCustomer;
+	}
+
+	async getCustomerByUUID(uuid: string) {
+		const getCustomer = await this.dbClient<Customer>("customers")
+			.select("*")
+			.where("uuid", uuid)
+			.first();
+
+		return getCustomer;
+	}
+
 	async createCustomer(
 		name: string,
 		email: string,
@@ -22,5 +40,16 @@ export class CustomerService {
 				.returning("uuid");
 			return result[0].uuid;
 		}
+		throw new ApplicationError("Duplicated User", 400);
+	}
+
+	async checkCustomer(email: string, password: string) {
+		const customer = await this.dbClient("customers")
+			.where("email", "=", email)
+			.first(["id", "email", "password"]);
+		if (customer && (await checkPassword(password, customer.password))) {
+			return customer;
+		}
+		throw new InvalidInfoError();
 	}
 }

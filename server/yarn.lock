@@ -793,6 +793,11 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
+"@types/jwt-simple@^0.5.33":
+  version "0.5.33"
+  resolved "https://registry.yarnpkg.com/@types/jwt-simple/-/jwt-simple-0.5.33.tgz#fb839cabe81437954f7d0cd01760ad8096ec526e"
+  integrity sha512-RcVbKkbUP6u5yFd9HuLhCkAYlT1FQVZylNsxxgaVMZxMajwrVTmQei7C6yMXSoAkXJXpGOUtbsY6Q9kq3+p93g==
+
 "@types/mime@*":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
@@ -802,6 +807,13 @@
   version "18.11.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
+
+"@types/permit@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@types/permit/-/permit-0.2.2.tgz#5351d1d9b55d2d9eebc15a1f6302d6dfacc469ea"
+  integrity sha512-GXlSlXFN11zyFd708Hy84c96q9l/DxyY9COTzc3VxTaiH5kD0c57ri6jUkqyU7QP/hklbzvcOWtXAeKc8Xg/ww==
+  dependencies:
+    "@types/node" "*"
 
 "@types/pg@^8.6.5":
   version "8.6.6"
