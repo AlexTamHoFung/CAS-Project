@@ -1,6 +1,6 @@
 import { Knex } from "knex";
-import { ApplicationError, InvalidInfoError } from "../utils/error";
-import { checkPassword, hashPassword } from "../utils/hash";
+import { ApplicationError } from "../utils/error";
+import {  hashPassword } from "../utils/hash";
 import { Customer } from "./model";
 
 export class CustomersService {
@@ -26,8 +26,8 @@ export class CustomersService {
 	async createCustomer(
 		name: string,
 		email: string,
+		password: string,
 		phone: number,
-		password: string
 	) {
 		const customer = await this.dbClient("customers")
 			.where("email", "=", email)
@@ -43,13 +43,14 @@ export class CustomersService {
 		throw new ApplicationError("Duplicated User", 400);
 	}
 
-	async checkCustomer(email: string, password: string) {
-		const customer = await this.dbClient("customers")
-			.where("email", "=", email)
-			.first(["id", "email", "password"]);
-		if (customer && (await checkPassword(password, customer.password))) {
+	async checkCustomer(name: string ) {
+		const customer = await this.dbClient.select("*")
+		.from<Customer>("customers")
+			.where({ name: name })
+			.first(["uuid", "name", "password"]);
 			return customer;
-		}
-		throw new InvalidInfoError();
+		// if (customer && (await checkPassword(password, customer.password))) {
+		// }
+		// throw new InvalidInfoError();
 	}
 }

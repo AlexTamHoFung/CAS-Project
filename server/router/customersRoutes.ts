@@ -5,4 +5,5 @@ import { asyncWrapper } from "../utils/wrapper";
 
 export const customersRoutes = express.Router();
 customersRoutes.post("/register", asyncWrapper(customersController.register));
-customersRoutes.post("/login", asyncWrapper(customersController.register));
+customersRoutes.get("/getCustomer", asyncWrapper(customersController.getCustomer));
+customersRoutes.post("/login", asyncWrapper(customersController.login));
