@@ -42,8 +42,6 @@ export class CustomersController {
 
 		if (customer.length > 0) {
 			res.json({ message: "signup success" });
-
-			return;
 		} else {
 			res.status(400).json({ message: "signup failed" });
 		}

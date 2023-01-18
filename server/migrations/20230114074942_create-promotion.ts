@@ -4,14 +4,13 @@ export async function up(knex: Knex): Promise<void> {
 	await knex.schema.createTable("companies", function (table) {
 		table.increments();
 		table.string("name").notNullable();
-		table.string("category").notNullable();
+		table.string("username").notNullable();
+		table.string("password").notNullable();
 		table.integer("store_number").notNullable();
-		table.string("positioning");
-		table.string("type");
+		table.string("target_customer");
+		table.string("company_type");
 		table.date("found_date");
 		table.string("size");
-		table.integer("avg_revenue");
-		table.integer("avg_transaction_count");
 		table.timestamps(true, true);
 	});
 }
