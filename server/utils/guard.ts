@@ -1,7 +1,7 @@
 import jwt from "./jwt";
 import jwtSimple from "jwt-simple";
 import Express from "express";
-import { authService } from "./app";
+import { customersService } from "../routes";
 import { Bearer } from "permit";
 
 const permit = new Bearer({ query: "access_token" });
@@ -17,10 +17,10 @@ export async function isLoggedIn(
 			return res.status(401).json({ msg: "Permission Denied" });
 		}
 		const payload = jwtSimple.decode(token, jwt.jwtSecret);
-		const user = await authService.getUserByUUID(payload.uuid);
-		if (user) {
-			const { password, ...others } = user;
-			req.user = { ...others };
+		const customer = await customersService.getCustomerByUUID(payload.uuid);
+		if (customer) {
+			const { password, ...others } = customer;
+			req.body = { ...others };
 			return next();
 		} else {
 			return res.status(401).json({ msg: "Permission Denied" });
