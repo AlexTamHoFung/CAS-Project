@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const CreateCusQr = () => {
     const [qrValue, setQrValue] = useState("");
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         const res = await QRCode.toDataURL(qrValue);

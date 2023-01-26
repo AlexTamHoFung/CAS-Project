@@ -1,9 +1,10 @@
-import Header from "./components/Header/Header";
+import Header from "./features/Header/Header";
 import "./App.css";
-import LabelBottomNavigation from "./components/BottomNav";
+import LabelBottomNavigation from "./features/BottomNav/BottomNav";
 import { BrowserRouter } from "react-router-dom";
 import { Container } from "@mui/system";
-import { Switch } from "react-router-dom";
+// import { Login } from "./features/auth/Login";
+// import { Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -11,9 +12,8 @@ function App() {
       <Header />
       <div className="App">
         <Container>
-          <Switch>
-            
-          </Switch>
+          hi
+          {/* <Login /> */}
         </Container>
       </div>
 

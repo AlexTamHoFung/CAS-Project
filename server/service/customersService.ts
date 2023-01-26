@@ -48,9 +48,6 @@ export class CustomersService {
 		.from<Customer>("customers")
 			.where({ name: name })
 			.first(["uuid", "name", "password"]);
-			return customer;
-		// if (customer && (await checkPassword(password, customer.password))) {
-		// }
-		// throw new InvalidInfoError();
+			return customer;  
 	}
 }
