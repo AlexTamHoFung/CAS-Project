@@ -1,13 +1,12 @@
 import { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
-	await knex.schema.createTable("store_users", function (table) {
+	await knex.schema.createTable("stores", function (table) {
 		table.increments();
 		table.string("name").notNullable;
 		table.string("username").notNullable;
 		table.string("password").notNullable;
 		table.string("location").notNullable;
-		table.string("position").notNullable;
 		table.string("size");
 		table.integer("company_id");
 		table.foreign("company_id").references("companies.id");
@@ -16,5 +15,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-	await knex.schema.dropTable("store_users");
+	await knex.schema.dropTable("stores");
 }

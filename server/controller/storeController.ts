@@ -1,21 +1,20 @@
 import type { Request, Response } from "express";
 import { logger } from "../utils/logger";
-import { CustomersService } from "../service/customersService";
+import { StoresService } from "../service/storesService";
 import { checkPassword } from "../utils/hash";
-import {  InvalidInfoError } from "../utils/error";
 import jwtSimple from "jwt-simple";
 import jwt from "../utils/jwt";
 
-export class CustomersController {
-	constructor(private customersService: CustomersService) {}
+export class StoresController {
+	constructor(private storesService: StoresService) {}
 
-	getCustomer = async (req: Request, res: Response) => {
+	getStore = async (req: Request, res: Response) => {
 		try {
-			const { name } = req.body;
-			const userResult = await this.customersService.getCustomer(name);
+			const { username } = req.body;
+			const userResult = await this.storesService.getStore(username);
 
 			if (userResult.length > 0) {
-				res.json({ message: "found customer", data: userResult });
+				res.json({ message: "found store user", data: userResult });
 				return;
 			} else {
 				res.status(400).json({ message: "no such user" });
@@ -28,19 +27,12 @@ export class CustomersController {
 	};
 
 	register = async (req: Request, res: Response) => {
-		const { name, email, password, phone } = req.body;
-		let regex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-		if (!email || !password || !regex.test(email)) {
-			throw new InvalidInfoError();
-		}
-		const customer = await this.customersService.createCustomer(
-			name,
-			email,
-			password,
-			phone
+		const { name, username, password, location, size, company_id } = req.body;
+		const store = await this.storesService.createStore(
+            name, username, password, location, size, company_id
 		);
 
-		if (customer.length > 0) {
+		if (store.length > 0) {
 			res.json({ message: "signup success" });
 		} else {
 			res.status(400).json({ message: "signup failed" });
@@ -49,22 +41,22 @@ export class CustomersController {
 
 	login = async (req: Request, res: Response) => {
 		try {
-			const { email, password } = req.body;
-			if (!email || !password) {
+			const { username, password } = req.body;
+			if (!username || !password) {
 				res.status(400).json({ message: "missing username / password" });
 				return;
 			}
 
-			const customer = await this.customersService.checkCustomer(
-				email
+			const store = await this.storesService.checkStore(
+				username
 				// password,
 			);
 
-			if (!customer) {
+			if (!store) {
 				res.status(400).json({ message: "no such user" });
 				return;
 			} else {
-				let result = await checkPassword(password, customer.password);
+				let result = await checkPassword(password, store.password);
 				if (!result) {
 					res.status(400).json({ message: "wrong password" });
 					return;
@@ -72,8 +64,8 @@ export class CustomersController {
 
 				// start generating jwt
 				const payload = {
-					uuid: customer.uuid,
-					email: customer.email
+					uuid: store.id,
+					username: store.username
 				};
 				const token = jwtSimple.encode(payload, jwt.jwtSecret);
 

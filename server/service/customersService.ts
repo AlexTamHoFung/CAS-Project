@@ -43,11 +43,14 @@ export class CustomersService {
 		throw new ApplicationError("Duplicated User", 400);
 	}
 
-	async checkCustomer(name: string ) {
+	async checkCustomer(email: string ) {
 		const customer = await this.dbClient.select("*")
 		.from<Customer>("customers")
-			.where({ name: name })
-			.first(["uuid", "name", "password"]);
-			return customer;  
+			.where({ email: email })
+			.first(["uuid", "email", "password"]);
+			return customer;
+		// if (customer && (await checkPassword(password, customer.password))) {
+		// }
+		// throw new InvalidInfoError();
 	}
 }
