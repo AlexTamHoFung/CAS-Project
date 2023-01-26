@@ -1,13 +1,13 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import logger from "redux-logger";
-// import authReducer from "../features/auth/authSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import authReducer from "../features/auth/authSlice";
 
 
-// export const store = configureStore({
-//   reducer: { auth: authReducer },
-//   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-// });
+export const store = configureStore({
+  reducer: { auth: authReducer },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+});
 
-// export type IRootState = ReturnType<typeof store.getState>;
+export type IRootState = ReturnType<typeof store.getState>;
 
-// export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch;

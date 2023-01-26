@@ -1,0 +1,63 @@
+* {
+  background-color: #55b4b7;
+
+  font-size: 5vw;
+  color: white;
+}
+
+.homeheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.register-button {
+  background-color: yellow;
+  color: #55b4b7;
+  border-radius: 5px;
+
+  margin-left: 20vh;
+  margin-right: 20vh;
+}
+
+.signup-button {
+  background-color: white;
+  color: #55b4b7;
+  border-radius: 5px;
+
+  margin-left: 20vh;
+  margin-right: 20vh;
+}
+
+.shop-entry {
+  display: flex;
+  justify-content: center;
+}
+
+/* 
+.homeheader {
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  position: fixed;
+  background-color: #55B4B7;
+
+  font-family: "Work Sans", sans-serif;
+  font-size: 5vw;
+  color: white;
+
+  padding-bottom: 15px;
+  z-index: 100;
+}
+
+
+@media (max-width: 1000px) {
+  .header{
+    padding: 15px;
+    font-size: 6.4vw;
+  }
+} */
