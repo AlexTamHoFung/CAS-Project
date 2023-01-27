@@ -21,7 +21,7 @@ export default function LabelBottomNavigation() {
         width: "auto",
         botton: 0,
         positon: "fixed",
-        // backgroundColor: "#2d313a",
+        backgroundColor: "white",
         zIndex: 100,
       }}
       value={value}
