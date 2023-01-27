@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Regqrcode from './views/register/S3-Qrcode/Regqrcode';
+import UserSignup from './views/signup/Usersignup/UserSignup';
 
 
 
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
 
 
-   <Regqrcode />
+   <UserSignup />
   </React.StrictMode>
 );
 
