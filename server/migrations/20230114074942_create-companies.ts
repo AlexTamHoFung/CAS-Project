@@ -8,9 +8,10 @@ export async function up(knex: Knex): Promise<void> {
 		table.string("password").notNullable();
 		table.integer("number_of_store").notNullable();
 		table.string("target_customer").notNullable();
-		table.string("company_type").notNullable;
-		table.date("found_date").notNullable;
-		table.string("size").notNullable;
+		table.string("company_type").notNullable();
+		table.string("category").notNullable();
+		table.date("found_date").notNullable();
+		table.string("size").notNullable();
 		table.timestamps(true, true);
 	});
 }
