@@ -4,11 +4,11 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
     await knex.schema.createTable("coupon_transactions", function (table) {
         table.increments();
-        table.integer("totel").notNullable;
-        table.integer("quantity").notNullable;
-        table.uuid("customer_id").notNullable;
-        table.foreign("customer_id").references("customers.uuid");
-        table.integer("listing_id").notNullable;
+        table.integer("total").notNullable();
+        table.integer("quantity").notNullable();
+        table.integer("customer_id").notNullable();
+        table.foreign("customer_id").references("customers.id");
+        table.integer("listing_id").notNullable();
         table.foreign("listing_id").references("coupon_listings.id");
         table.timestamps(true, true);
     });
