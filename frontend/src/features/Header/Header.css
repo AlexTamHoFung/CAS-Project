@@ -1,25 +1,16 @@
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  background-color: #55B4B7;
+* {
+  background-color: #55b4b7;
 
-  font-family: "Work Sans", sans-serif;
   font-size: 5vw;
   color: white;
-
-  padding-bottom: 15px;
-  box-shadow: 0px 1px 5px black;
-  
-  z-index: 100;
-  cursor: pointer;
-
 }
 
-@media (max-width: 1000px) {
-  .header{
-    padding: 15px;
-    font-size: 6.4vw;
-  }
+.homeheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
 }
