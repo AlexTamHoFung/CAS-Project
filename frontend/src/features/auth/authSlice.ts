@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 interface AuthState {
   isAuth: boolean;
-  name: string;
+  email: string;
   loading: boolean;
   error: string | undefined;
 }
@@ -19,7 +19,7 @@ const { REACT_APP_API_BASE } = process.env;
 let initialState: AuthState;
 initialState = {
   isAuth: !!window.localStorage.getItem("token"),
-  name: "",
+  email: "",
   loading: false,
   error: undefined,
 };
@@ -29,17 +29,17 @@ initialState = {
 // #########
 export const loginThunk = createAsyncThunk<
   string,
-  { name: string; password: string },
+  { email: string; password: string },
   { rejectValue: string }
->("@auth/login", async ({ name, password }, thunkAPI) => {
+>("@customers/login", async ({ email, password }, thunkAPI) => {
   try {
-    const res = await fetch(`${REACT_APP_API_BASE}/auth/login`, {
+    const res = await fetch(`${REACT_APP_API_BASE}/customers/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: name,
+        email: email,
         password: password,
       }),
     });
@@ -61,7 +61,7 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action: PayloadAction<string>) => {
       state.isAuth = true;
-      state.name = action.payload;
+      state.email = action.payload;
       console.log("check action payload", action.payload);
       localStorage.setItem("auth", JSON.stringify(state));
     },
@@ -76,7 +76,7 @@ export const authSlice = createSlice({
         console.log("check jwt", action.payload);
         let decoded: JWTPayload = jwt_decode(action.payload);
         console.log("check decoded", decoded);
-        state.name = decoded.name;
+        state.email = decoded.name;
         state.isAuth = true;
 
         localStorage.setItem("token", action.payload);

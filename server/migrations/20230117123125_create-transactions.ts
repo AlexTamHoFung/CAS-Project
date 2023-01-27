@@ -9,10 +9,10 @@ export async function up(knex: Knex): Promise<void> {
         table.string("payment_method").notNullable;
         table.boolean("collect_point").notNullable;
         table.boolean("is_refund").defaultTo(false).notNullable;
-        table.string("customer_id").notNullable;
-        table.foreign("customer_id").references("customers.id");
-        table.string("store_user_id").notNullable;
-        table.foreign("store_user_id").references("store_users.id");
+        table.uuid("customer_id").notNullable;
+        table.foreign("customer_id").references("customers.uuid");
+        table.integer("store_id").notNullable;
+        table.foreign("store_id").references("stores.id");
         table.timestamps(true, true);
 
     });

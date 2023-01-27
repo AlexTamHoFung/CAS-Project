@@ -6,8 +6,8 @@ export async function up(knex: Knex): Promise<void> {
         table.increments();
         table.integer("totel").notNullable;
         table.integer("quantity").notNullable;
-        table.integer("customer_id").notNullable;
-        table.foreign("customer_id").references("customers.id");
+        table.uuid("customer_id").notNullable;
+        table.foreign("customer_id").references("customers.uuid");
         table.integer("listing_id").notNullable;
         table.foreign("listing_id").references("coupon_listings.id");
         table.timestamps(true, true);

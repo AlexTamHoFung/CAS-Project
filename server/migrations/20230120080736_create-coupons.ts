@@ -10,8 +10,8 @@ await knex.schema.createTable("coupons", function (table) {
     table.date("expiry").notNullable;
     table.boolean("is_used").notNullable;
     table.boolean("is_expired").notNullable;
-    table.integer("customer_id").notNullable;
-    table.foreign("customer_id").references("customers.id");
+    table.uuid("customer_id").notNullable;
+    table.foreign("customer_id").references("customers.uuid");
     table.timestamps(true, true);
 });
 }
