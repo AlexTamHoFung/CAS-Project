@@ -1,37 +1,34 @@
-// import Header from "./features/Header/Header";
-// import "./App.css";
-// import LabelBottomNavigation from "./features/BottomNav/BottomNav";
-// import { BrowserRouter } from "react-router-dom";
-// import { Container } from "@mui/system";
-// // import { Login } from "./features/auth/Login";
-// // import { Switch } from "react-router-dom";
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//     <Header />
-//       <div className="App">
-//         <Container>
-//           hi
-//           {/* <Login /> */}
-//         </Container>
-//       </div>
+import "./App.css";
+import Header from "./features/Header/Header";
+import LabelBottomNavigation from "./features/BottomNav/BottomNav";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Container } from "@mui/system";
+import { Login } from "./features/auth/Login";
+import PrivateRoute from "./features/auth/PrivateRoute";
 
 
-
-//       <LabelBottomNavigation />
-//     </BrowserRouter>
-
-//   );
-// }
-
-// export default App;
-
-
-import React from 'react'
-
-export default function App() {
+function App() {
   return (
-    <div>App</div>
-  )
+    <BrowserRouter>
+      <Header />
+      <div className="App">
+        <Container>
+          <Routes>
+            <Route path="/" element={<PrivateRoute/>}>
+              
+            </Route>
+          </Routes>
+          <Login />
+        </Container>
+      </div>
+      <LabelBottomNavigation />
+    </BrowserRouter>
+  );
 }
+
+export default App;
+
+// 1. Routes
+// 2. 404
+// 3. Public and Private routes
+// 4. Guard Component

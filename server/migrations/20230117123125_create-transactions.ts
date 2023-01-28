@@ -11,8 +11,8 @@ export async function up(knex: Knex): Promise<void> {
         table.boolean("is_refund").defaultTo(false).notNullable();
         table.integer("customer_id").notNullable();
         table.foreign("customer_id").references("customers.id");
-        table.integer("store_id").notNullable();
-        table.foreign("store_id").references("stores.id");
+        table.integer("store_user_id").notNullable();
+        table.foreign("store_user_id").references("store_users.id");
         table.timestamps(true, true);
 
     });

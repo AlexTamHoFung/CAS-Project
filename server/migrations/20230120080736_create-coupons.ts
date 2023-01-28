@@ -5,6 +5,7 @@ export async function up(knex: Knex): Promise<void> {
 
 await knex.schema.createTable("coupons", function (table) {
     table.increments();
+    table.uuid("uuid").defaultTo(knex.raw('gen_random_uuid()'));
     table.string("name").notNullable();
     table.text("description").notNullable();
     table.date("expiry").notNullable();

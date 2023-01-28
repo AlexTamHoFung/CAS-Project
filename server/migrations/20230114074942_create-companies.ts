@@ -4,8 +4,8 @@ export async function up(knex: Knex): Promise<void> {
 	await knex.schema.createTable("companies", function (table) {
 		table.increments();
 		table.string("name").notNullable();
-		table.string("username").notNullable();
-		table.string("password").notNullable();
+		table.string("username").unique().notNullable();
+		table.string("password").unique().notNullable();
 		table.integer("number_of_store").notNullable();
 		table.string("target_customer").notNullable();
 		table.string("company_type").notNullable();

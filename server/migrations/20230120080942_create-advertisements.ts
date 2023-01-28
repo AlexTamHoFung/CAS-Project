@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.text("description").notNullable();
         table.date("start_date").notNullable();
         table.date("end_date").notNullable();
-        table.boolean("is_deleted").notNullable();
+        table.boolean("is_deleted").defaultTo(false).notNullable();
         table.integer("company_id").notNullable();
         table.foreign("company_id").references("companies.id");
         table.timestamps(true, true);
