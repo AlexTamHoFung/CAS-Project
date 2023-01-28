@@ -7,6 +7,8 @@ import { CompaniesService } from "./service/companiesService";
 import { CompaniesController } from "./controller/companyController";
 import { StoresService } from "./service/storesService";
 import { StoresController } from "./controller/storeController";
+import { AdminsService } from "./service/adminsService";
+import { AdminsController } from "./controller/adminController";
 
 export const customersService = new CustomersService(knex);
 export const customersController = new CustomersController(customersService);
@@ -14,12 +16,16 @@ export const companiesService = new CompaniesService(knex);
 export const companiesController = new CompaniesController(companiesService);
 export const storesService = new StoresService(knex);
 export const storesController = new StoresController(storesService);
+export const adminsService = new AdminsService(knex);
+export const adminsController = new AdminsController(adminsService);
 
 import { customersRoutes } from "./router/customersRoutes";
 import { companiesRoutes } from "./router/companiesRoutes";
 import { storesRoutes } from "./router/storesRoutes";
+import { adminsRoutes } from "./router/adminsRoutes";
 
 export const routes = express.Router();
 routes.use("/customers", customersRoutes);
 routes.use("/companies", companiesRoutes);
 routes.use("/stores", storesRoutes);
+routes.use("/admins", adminsRoutes);

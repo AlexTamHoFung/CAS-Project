@@ -34,3 +34,9 @@ export interface Stores {
 	size: string,
 	company_id: number
 }
+
+export interface Admins {
+	id:number,
+	username: string,
+	password: string
+}
