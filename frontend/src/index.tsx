@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import UserSignup from './views/signup/Usersignup/UserSignup';
+import Main from './Main';
+
+
 
 
 
@@ -13,7 +15,7 @@ root.render(
   <React.StrictMode>
 
 
-   <UserSignup />
+   <Main />
   </React.StrictMode>
 );
 
