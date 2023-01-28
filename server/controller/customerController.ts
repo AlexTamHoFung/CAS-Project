@@ -28,7 +28,7 @@ export class CustomersController {
 	};
 
 	register = async (req: Request, res: Response) => {
-		const { name, email, password, phone } = req.body;
+		const {name, email, password, phone } = req.body;
 		let regex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
 		if (!email || !password || !regex.test(email)) {
 			throw new InvalidInfoError();
