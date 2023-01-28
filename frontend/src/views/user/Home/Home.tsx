@@ -10,19 +10,17 @@ import Header from "../../../features/Header/Header";
 
 export default function Home() {
   return (
-    <BrowserRouter>
-    <Header />
+    
+  
       <div className="App">
-        <Container>
+       
           hi
-          {/* <Login /> */}
-        </Container>
+        
       </div>
 
 
 
-      <LabelBottomNavigation />
-    </BrowserRouter>
+  
 
   );
 }

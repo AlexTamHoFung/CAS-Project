@@ -10,7 +10,7 @@ interface AuthState {
 }
 
 interface JWTPayload {
-  name: string;
+  email: string;
   uuid: string;
 }
 
@@ -76,7 +76,7 @@ export const authSlice = createSlice({
         console.log("check jwt", action.payload);
         let decoded: JWTPayload = jwt_decode(action.payload);
         console.log("check decoded", decoded);
-        state.email = decoded.name;
+        state.email = decoded.email;
         state.isAuth = true;
 
         localStorage.setItem("token", action.payload);

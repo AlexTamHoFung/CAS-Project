@@ -31,14 +31,14 @@ export class CustomersService {
 	) {
 		const customer = await this.dbClient("customers")
 			.where("email", "=", email)
-			.first(["uuid", "name", "email", "password", "phone"]);
+			.first(["id", "uuid", "name", "email", "password", "phone"]);
 		if (!customer) {
 			password = await hashPassword(password);
 			const insertData = { name, email, password, phone };
 			const result = await this.dbClient("customers")
 				.insert(insertData)
-				.returning("uuid");
-			return result[0].uuid;
+				.returning("id");
+			return result[0].id;
 		}
 		throw new ApplicationError("Duplicated User", 400);
 	}
@@ -47,7 +47,7 @@ export class CustomersService {
 		const customer = await this.dbClient.select("*")
 		.from<Customer>("customers")
 			.where({ email: email })
-			.first(["uuid", "email", "password"]);
+			.first(["id", "uuid", "email", "password"]);
 			return customer;
 		// if (customer && (await checkPassword(password, customer.password))) {
 		// }
