@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from "./features/Header/Header";
-import LabelBottomNavigation from "./features/BottomNav/BottomNav";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container } from "@mui/system";
 import { Login } from "./features/auth/Login";
@@ -21,7 +20,6 @@ function App() {
           <Login />
         </Container>
       </div>
-      <LabelBottomNavigation />
     </BrowserRouter>
   );
 }
