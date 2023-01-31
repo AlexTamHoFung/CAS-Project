@@ -6,10 +6,10 @@ import { Customer } from "./model";
 export class CustomersService {
 	constructor(private dbClient: Knex) {}
 
-	async getCustomer(name: string) {
+	async getCustomer(phone: number) {
 		const getCustomer = await this.dbClient("customers")
-			.select("name")
-			.where({ name: name });
+			.select("phone")
+			.where({ phone: phone });
 
 		return getCustomer;
 	}

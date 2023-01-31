@@ -8,7 +8,8 @@ import Profile from "./views/user/Profile/Profile";
 import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
-import { QRCodeCanvas } from "qrcode.react";
+
+import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
               <Route path="record" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
               <Route path="scan" element={<ScanQR />} />
-              <Route path="displayQR" element={<QRCodeCanvas value={"https://picturesofpeoplescanningqrcodes.tumblr.com/"} />} />
+              <Route path="displayQR" element={<DisplayQR />} />
             </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<>404 : Page Not Found</>} />
