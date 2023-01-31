@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./features/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Container } from "@mui/system";
+// import { Container } from "@mui/system";
 import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
 import Home from "./views/user/Home/Home";
@@ -9,6 +9,8 @@ import Profile from "./views/user/Profile/Profile";
 import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
+import LabelBottomNavigation from "./features/BottomNav/BottomNav";
+import { QRCodeCanvas } from "qrcode.react";
 
 
 function App() {
@@ -22,20 +24,18 @@ function App() {
               
               <Route element={<Home />} index />
               <Route path="profile" element={<Profile />} />
-              <Route path="recoed" element={<Record />} />
+              <Route path="record" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
               <Route path="scan" element={<ScanQR />} />
+              <Route path="displayQR" element={<QRCodeCanvas value={"https://picturesofpeoplescanningqrcodes.tumblr.com/"} />} />
               {/* <LabelBottomNavigation /> */}
             </Route>
           <Route path="login" element={<Login />} />
+          <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
       
       </div>
-<<<<<<< HEAD
-    </BrowserRouter>
-=======
    
->>>>>>> 889ab3985cc62c2195577029bb8e0499a2ef7dd4
   );
 }
 

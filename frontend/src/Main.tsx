@@ -1,12 +1,13 @@
 import React from "react";
 import "./Main.css";
 import logo from './api/image/logo.png';
+import { useNavigate } from "react-router-dom";
 // import { Navigate, useNavigate } from "react-router-dom";
 // import { Login } from "./features/auth/Login";
 
 
 export default function Home() {
- 
+  let navigate = useNavigate();
 
 
   return (
@@ -25,7 +26,7 @@ export default function Home() {
         <button className="register-button">Register
         </button>
         <br />
-        <button className="signup-button" >Sign in
+        <button className="signup-button" onClick={() => navigate("/login")} >Sign in
         </button>
       </div>
       
