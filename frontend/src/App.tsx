@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./features/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Container } from "@mui/system";
+
 import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
 import Home from "./views/user/Home/Home";
@@ -13,10 +13,11 @@ import Record from "./views/user/Record/Record";
 
 function App() {
   return (
-   
+    <BrowserRouter>     
     <div className="App">
         <Header />
-        
+
+  
           <Routes>
             <Route path="/" element={<PrivateRoute/>}>
               
@@ -25,17 +26,13 @@ function App() {
               <Route path="recoed" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
               <Route path="scan" element={<ScanQR />} />
-              {/* <LabelBottomNavigation /> */}
+
             </Route>
           <Route path="login" element={<Login />} />
           </Routes>
       
       </div>
-<<<<<<< HEAD
     </BrowserRouter>
-=======
-   
->>>>>>> 889ab3985cc62c2195577029bb8e0499a2ef7dd4
   );
 }
 
