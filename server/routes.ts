@@ -22,6 +22,8 @@ import { TransactionsService } from "./service/transactionsService";
 import { TransactionsController } from "./controller/transactionController";
 import { CoupontransactionsService } from "./service/coupontransactionsService";
 import { CoupontransactionsController } from "./controller/coupontransactionController";
+import { CouponsService } from "./service/couponsService";
+import { CouponsController } from "./controller/couponController";
 
 export const customersService = new CustomersService(knex);
 export const customersController = new CustomersController(customersService);
@@ -44,6 +46,8 @@ export const transactionsService = new TransactionsService(knex);
 export const transactionsController = new TransactionsController(transactionsService);
 export const coupontransactionsService = new CoupontransactionsService(knex);
 export const coupontransactionsController = new CoupontransactionsController(coupontransactionsService);
+export const couponsService = new CouponsService(knex);
+export const couponsController = new CouponsController(couponsService);
 
 import { customersRoutes } from "./router/customersRoutes";
 import { companiesRoutes } from "./router/companiesRoutes";
@@ -55,6 +59,7 @@ import { listingsRoutes } from "./router/listingsRoutes";
 import { pointsRoutes } from "./router/pointsRoutes";
 import { transactionsRoutes } from "./router/transactionsRoutes";
 import { coupontransactionsRoutes } from "./router/coupontransactionsRoutes";
+import { couponsRoutes } from "./router/couponsRoutes";
 
 export const routes = express.Router();
 routes.use("/customers", customersRoutes);
@@ -67,3 +72,4 @@ routes.use("/listings", listingsRoutes);
 routes.use("/points", pointsRoutes);
 routes.use("/transactions", transactionsRoutes);
 routes.use("/coupon_transactions", coupontransactionsRoutes);
+routes.use("/coupon", couponsRoutes);

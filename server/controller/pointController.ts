@@ -23,15 +23,15 @@ export class PointsController {
 		}
 	}
     createPoint = async (req: Request, res: Response) => {
-		const { amount, point_type, customer_id } = req.body;
-		const promo = await this.pointsService.createPoint(
-            amount, point_type, customer_id
+		const { amount, point_type, transaction_date, customer_id } = req.body;
+		const point = await this.pointsService.createPoint(
+            amount, point_type, transaction_date, customer_id
 		);
 
-		if (promo.length > 0) {
-			res.json({ message: "create success" });
+		if (point.length > 0) {
+			res.json({ message: "create point success" });
 		} else {
-			res.status(400).json({ message: "create failed" });
+			res.status(400).json({ message: "create point failed" });
 		}
 	}
 }

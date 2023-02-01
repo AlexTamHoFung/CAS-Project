@@ -68,3 +68,9 @@ Routes map [[updated on 1 FEb 2023]]-->
 ./post
     ~ req.body -> total, quantity, transaction_date, listing_id, customer_id
 
+/coupons
+./get
+    ~ req.body -> customer_id
+./post
+    ~ req.body -> transaction_date, name, description, expiry, is_used, is_expired, customer_id
+
