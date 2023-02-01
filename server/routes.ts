@@ -18,6 +18,11 @@ import { ListingsController } from "./controller/listingController";
 import { PointsService } from "./service/pointsService";
 import { PointsController } from "./controller/pointController";
 
+import { TransactionsService } from "./service/transactionsService";
+import { TransactionsController } from "./controller/transactionController";
+import { CoupontransactionsService } from "./service/coupontransactionsService";
+import { CoupontransactionsController } from "./controller/coupontransactionController";
+
 export const customersService = new CustomersService(knex);
 export const customersController = new CustomersController(customersService);
 export const companiesService = new CompaniesService(knex);
@@ -35,6 +40,11 @@ export const listingsController = new ListingsController(listingsService);
 export const pointsService = new PointsService(knex);
 export const pointsController = new PointsController(pointsService);
 
+export const transactionsService = new TransactionsService(knex);
+export const transactionsController = new TransactionsController(transactionsService);
+export const coupontransactionsService = new CoupontransactionsService(knex);
+export const coupontransactionsController = new CoupontransactionsController(coupontransactionsService);
+
 import { customersRoutes } from "./router/customersRoutes";
 import { companiesRoutes } from "./router/companiesRoutes";
 import { storesRoutes } from "./router/storesRoutes";
@@ -43,6 +53,8 @@ import { adminsRoutes } from "./router/adminsRoutes";
 import { promotionsRoutes } from "./router/promotionsRoutes";
 import { listingsRoutes } from "./router/listingsRoutes";
 import { pointsRoutes } from "./router/pointsRoutes";
+import { transactionsRoutes } from "./router/transactionsRoutes";
+import { coupontransactionsRoutes } from "./router/coupontransactionsRoutes";
 
 export const routes = express.Router();
 routes.use("/customers", customersRoutes);
@@ -53,3 +65,5 @@ routes.use("/admins", adminsRoutes);
 routes.use("/promotions", promotionsRoutes);
 routes.use("/listings", listingsRoutes);
 routes.use("/points", pointsRoutes);
+routes.use("/transactions", transactionsRoutes);
+routes.use("/coupon_transactions", coupontransactionsRoutes);

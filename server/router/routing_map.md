@@ -3,10 +3,12 @@ Routes map [[updated on 1 FEb 2023]]-->
 /customers
 ./register
     ~ req.body -> name, email, password, phone
-./getCustomer
+./getcustomer
     ~ req.body -> phone
 ./login
     ~ req.body -> email, password
+./getcustomerid
+    ~ req.body -> uuid
 
 /companies
 ./register
@@ -52,6 +54,17 @@ Routes map [[updated on 1 FEb 2023]]-->
 ./get
     ~ req.body -> customer_id
 ./create    
-    ~ req.body -> amount, point_type, customer_id
+    ~ req.body -> transaction_date, amount, point_type, customer_id
 
+/transactions
+./get
+    ~ req.body -> customer_id
+./create
+    ~req.body -> transaction_date, amount, payment_method, collect_point, is_refund, store_user_id, customer_id
+
+/coupontransactions
+./get
+    ~ req.body -> customer_id
+./post
+    ~ req.body -> total, quantity, transaction_date, listing_id, customer_id
 

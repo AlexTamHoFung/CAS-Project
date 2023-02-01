@@ -12,8 +12,9 @@ export class PointsService {
 
         async createPoint(	amount: number,
             point_type: string,
+            transaction_date: string,
             customer_id: number) {
-                const insertData = {amount, point_type, customer_id}
+                const insertData = {amount, point_type, transaction_date, customer_id}
                 const result = await this.dbClient("points")
                 .insert(insertData)
                 .returning("id");
