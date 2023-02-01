@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { logger } from "../utils/logger";
 import { CustomersService } from "../service/customersService";
 import { checkPassword } from "../utils/hash";
-import {  InvalidInfoError } from "../utils/error";
+import {  InvalidInfoError, DuplicatedRegisterError} from "../utils/error";
 import jwtSimple from "jwt-simple";
 import jwt from "../utils/jwt";
 
@@ -11,8 +11,8 @@ export class CustomersController {
 
 	getCustomer = async (req: Request, res: Response) => {
 		try {
-			const { name } = req.body;
-			const userResult = await this.customersService.getCustomer(name);
+			const { phone } = req.body;
+			const userResult = await this.customersService.getCustomer(phone);
 
 			if (userResult.length > 0) {
 				res.json({ message: "found customer", data: userResult });
@@ -30,9 +30,15 @@ export class CustomersController {
 	register = async (req: Request, res: Response) => {
 		const {name, email, password, phone } = req.body;
 		let regex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-		if (!email || !password || !regex.test(email)) {
+
+		if (!email || !password || !regex.test(email) || !phone) {
 			throw new InvalidInfoError();
 		}
+		const is_phone_duplicated = await this.customersService.getCustomer(phone)
+		if (is_phone_duplicated.length > 0){
+			throw new DuplicatedRegisterError();
+		}
+
 		const customer = await this.customersService.createCustomer(
 			name,
 			email,
@@ -40,7 +46,7 @@ export class CustomersController {
 			phone
 		);
 
-		if (customer.length > 0) {
+		if (customer) {
 			res.json({ message: "signup success" });
 		} else {
 			res.status(400).json({ message: "signup failed" });

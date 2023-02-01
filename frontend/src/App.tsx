@@ -1,7 +1,6 @@
 import "./App.css";
 import Header from "./features/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
 import Home from "./views/user/Home/Home";
@@ -10,10 +9,12 @@ import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
 
+import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
+
 
 function App() {
   return (
-    <BrowserRouter>     
+      
     <div className="App">
         <Header />
 
@@ -23,16 +24,17 @@ function App() {
               
               <Route element={<Home />} index />
               <Route path="profile" element={<Profile />} />
-              <Route path="recoed" element={<Record />} />
+              <Route path="record" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
               <Route path="scan" element={<ScanQR />} />
-
+              <Route path="displayQR" element={<DisplayQR />} />
             </Route>
           <Route path="login" element={<Login />} />
+          <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
       
       </div>
-    </BrowserRouter>
+   
   );
 }
 

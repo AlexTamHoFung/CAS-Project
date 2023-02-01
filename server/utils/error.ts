@@ -25,3 +25,10 @@ export class UnauthorizedError extends ApplicationError {
 		Object.setPrototypeOf(this, ApplicationError.prototype);
 	}
 }
+
+export class DuplicatedRegisterError extends ApplicationError {
+	constructor() {
+		super("Already registered", 401);
+		Object.setPrototypeOf(this, ApplicationError.prototype);
+	}
+}
