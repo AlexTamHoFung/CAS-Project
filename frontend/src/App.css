@@ -1,4 +1,4 @@
-.App {
+/* .App {
   padding-top: 130px;
   padding-bottom: 70px;
   min-height: 100vh;
@@ -10,4 +10,8 @@
   .App{
     padding-top: 70px;
   }
+} */
+
+.App {
+  background-color: #ffffff;
 }

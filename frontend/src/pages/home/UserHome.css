@@ -1,0 +1,72 @@
+.app {
+  background-color: #ffffff;
+}
+
+
+.App-header {
+  background-color: #ffffff !important;
+}
+
+.main-header {
+  background-color: #55b4b7 !important;
+  height: 60px;
+  line-height: 60px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.App-logo {
+  height: 60px;
+  float: left;
+}
+
+/* .title {
+  line-height: 64px !important;
+  display: inline;
+  color: #000 !important;
+} */
+
+.search-input {
+  width: 400px !important;
+  line-height: 64px;
+  margin-top: 17px;
+  margin-left: 37px;
+}
+
+.button-group {
+  float: right;
+  margin-top: 17px;
+  margin-left: 15px;
+}
+
+/* Footer */
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  font-size: 0.28 rem;
+}
+
+.footer ul{
+  display: flex;
+  height: 60px;
+  background-color: #55b4b7;
+}
+
+.footer li{
+  flex: 1;
+  text-align: center;
+  list-style-type: none;
+  color: white;
+
+  margin-bottom: 0.06 rem;
+  cursor: pointer;
+}
+/* Footer */
