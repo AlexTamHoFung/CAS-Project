@@ -20,8 +20,7 @@ function App() {
     <div className="App">
         <Header />
           <Routes>
-            <Route path="/" element={<PrivateRoute/>}>
-              
+            <Route path="/" element={<PrivateRoute/>}>             
               <Route element={<Home />} index />
               <Route path="profile" element={<Profile />} />
               <Route path="record" element={<Record />} />
@@ -30,7 +29,12 @@ function App() {
               <Route path="displayQR" element={<DisplayQR />} />
               <Route path="logout" element={<Logout />} />
             </Route>
+            <Route path="/shop" element={<PrivateRoute/>}>
+            <Route element={<Home />} index />
+            <Route path="scan" element={<></>} />
+            </Route>
           <Route path="login" element={<Login />} />
+          <Route path="shopLogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
       

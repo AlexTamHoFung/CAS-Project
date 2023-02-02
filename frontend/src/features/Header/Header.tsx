@@ -4,14 +4,14 @@ import logo from './headlogo.png';
 
 function Header (){
   return (
-    <div>
-      <div className="homeheader">
-        <div>EN|中</div>
-        <div>Q</div>
+    <div className="Header__container">
+      <div className="Header__left">
+        <div>EN | 中</div>
+        <div>常見問題</div>
       </div>
 
-      <div className="logo">
-        <img src= {logo} alt='logo' />
+      <div className="Header__right">
+        <img src={logo} alt='logo' />
       </div>
     </div>
 

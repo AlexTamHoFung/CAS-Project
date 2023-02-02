@@ -1,52 +1,50 @@
-import { type } from 'os'
-import React, {useState} from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 type FormValues = {
-    name: string,
-    email: string,
-    password: string,
-    phone: number,
-}
+  name: string;
+  email: string;
+  password: string;
+  phone: number;
+};
 
 const Register = () => {
-
-   const {register, handleSubmit, formState: {errors} } = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
     defaultValues: {
-        name: "",
-        email: "",
-        password: "",
-        phone: +"",
-    }
-   });
+      name: "",
+      email: "",
+      password: "",
+      phone: +"",
+    },
+  });
 
-   register("name", {
+  register("name", {
     required: {
-        value: true,
-        message: "this is required"
-    }
-    });
-    
-   register("email", {required: true});
-   register("password", {required: true, minLength: 6});
-   register("phone", {required: true, minLength: 8, maxLength: 8});
+      value: true,
+      message: "this is required",
+    },
+  });
+
+  register("email", { required: true });
+  register("password", { required: true, minLength: 6 });
+  register("phone", { required: true, minLength: 8, maxLength: 8 });
 
   return (
     <div className="container">
-        <div className="app-wrapper">
-            <div>
-                <h1 className="title">
-                    Create Account
-                </h1>
-            </div>
-            <form className="form-wrapper">
-                <div className="label"></div>
-            </form>
-
+      <div className="app-wrapper">
+        <div>
+          <h1 className="title">Create Account</h1>
         </div>
-
+        <form className="form-wrapper">
+          <div className="label"></div>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
