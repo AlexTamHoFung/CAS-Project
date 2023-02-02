@@ -8,7 +8,7 @@ export class CouponsController {
     getCoupon = async (req: Request, res: Response) => {
 		try {
 			const { customer_id } = req.body;
-			const couponResult = await this.couponsService.getPoint(customer_id);
+			const couponResult = await this.couponsService.getCoupon(customer_id);
 
 			if (couponResult.length > 0) {
 				res.json({ message: "found coupon", data: couponResult });

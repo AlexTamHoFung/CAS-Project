@@ -22,16 +22,29 @@ export class PointsController {
 			
 		}
 	}
-    createPoint = async (req: Request, res: Response) => {
+    addPoint = async (req: Request, res: Response) => {
 		const { amount, point_type, transaction_date, customer_id } = req.body;
-		const point = await this.pointsService.createPoint(
+		const point = await this.pointsService.addPoint(
             amount, point_type, transaction_date, customer_id
 		);
 
-		if (point.length > 0) {
+		if (point) {
 			res.json({ message: "create point success" });
 		} else {
 			res.status(400).json({ message: "create point failed" });
+		}
+	}
+
+	redeemByPoint = async (req: Request, res: Response) => {
+		const { amount, point_type, transaction_date, customer_id } = req.body;
+		const redeem = await this.pointsService.redeemByPoint(
+            amount, point_type, transaction_date, customer_id
+		);
+
+		if (redeem) {
+			res.json({ message: "redeem by point success" });
+		} else {
+			res.status(400).json({ message: "redeem by point failed" });
 		}
 	}
 }
