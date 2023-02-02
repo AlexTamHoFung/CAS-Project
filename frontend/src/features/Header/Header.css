@@ -1,16 +1,21 @@
-* {
-  background-color: #55b4b7;
-
-  font-size: 5vw;
-  color: white;
-}
-
-.homeheader {
+.Header__container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  background-color: #515151;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 25px;
 }
 
-.logo {
+.Header__left {
   display: flex;
-  justify-content: center;
+  width: 20%;
+  justify-content: space-around;
+}
+
+.Header__right img {
+  width: 55px;
+  height: 55px;
 }

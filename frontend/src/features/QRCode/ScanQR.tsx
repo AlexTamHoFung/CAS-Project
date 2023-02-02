@@ -1,25 +1,10 @@
 import React, { SetStateAction, useState } from "react";
-import {QrReader} from "react-qr-reader";
+import {OnResultFunction, QrReader} from "react-qr-reader";
 import "./ScanQR.css"
 
-// declare namespace QrReader {
-//   interface props {
-//     onScan: (data: string | null) => void;
-//     onError: (err: any) => void;
-//     onLoad?: (() => void) | undefined;
-//     onImageLoad?: ((event: React.SyntheticEvent<HTMLImageElement>) => void) | undefined;
-//     delay: number | false | undefined;
-//     facingMode?: 'user' | 'environment' | undefined;
-//     legacyMode?: boolean | undefined;
-//     resolution?: number | undefined;
-//     showViewFinder?: boolean | undefined;
-//     style?: any;
-//     className?: string | undefined;
-//   }
-// }
 
 const MyQrReader: React.FC<{
-  onScan: (data: string) => void;
+  // onScan: (data: string) => void;
   onError: (err: any) => void;
   onLoad?: (() => void);
   onImageLoad?: ((event: React.SyntheticEvent<HTMLImageElement>) => void);
@@ -31,10 +16,11 @@ const MyQrReader: React.FC<{
   style?: any;
   videoStyle?: any;
   className?: string;
+  onResult?: OnResultFunction;
 }> = QrReader as any
 
 const ScanQR = () => {
-  const [result, setResult] = useState("no result");
+  const [result, setResult] = useState("");
   const [error, setError] = useState(null);
 
   if (error) {
@@ -48,10 +34,11 @@ const ScanQR = () => {
         onError={(error: { message: SetStateAction<null>; }) => {
           setError(error.message);
         }}
-        onScan={(data: SetStateAction<string>) => {
+        onResult={(data) => {
           if (data) {
-            setResult(data);
-            setError(null);
+            setResult(data.getText());
+            // setError(null);
+            console.log(data.getText())
           }
         }}
         videoStyle={{ width: "60%", screenLeft: "20%" }}
