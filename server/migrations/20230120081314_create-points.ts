@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void> {
         table.increments();
         table.integer("amount").notNullable();
         table.string("point_type").notNullable();
-        table.timestamps("transaction_date").notNullable();
+        table.date("transaction_date").notNullable();
         table.integer("customer_id").notNullable();
         table.foreign("customer_id").references("customers.id");
         table.timestamps(true, true);

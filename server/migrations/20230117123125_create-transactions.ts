@@ -4,7 +4,7 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
     await knex.schema.createTable("transactions", function(table){
         table.increments();
-        table.timestamp("transaction_date").notNullable();
+        table.date("transaction_date").notNullable();
         table.integer("amount").notNullable();
         table.string("payment_method").notNullable();
         table.boolean("collect_point").notNullable();
