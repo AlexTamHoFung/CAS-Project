@@ -74,6 +74,7 @@ export class CustomersController {
 	login = async (req: Request, res: Response) => {
 		try {
 			const { email, password } = req.body;
+			console.log (req.body.email);
 			if (!email || !password) {
 				res.status(400).json({ message: "missing username / password" });
 				return;

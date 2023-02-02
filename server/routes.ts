@@ -72,4 +72,4 @@ routes.use("/listings", listingsRoutes);
 routes.use("/points", pointsRoutes);
 routes.use("/transactions", transactionsRoutes);
 routes.use("/coupon_transactions", coupontransactionsRoutes);
-routes.use("/coupon", couponsRoutes);
+routes.use("/coupons", couponsRoutes);

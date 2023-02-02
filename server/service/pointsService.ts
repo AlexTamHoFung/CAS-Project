@@ -10,7 +10,18 @@ export class PointsService {
             return getPoints;
         }
 
-        async createPoint(	amount: number,
+        async addPoint(	amount: number,
+            point_type: string,
+            transaction_date: string,
+            customer_id: number) {
+                const insertData = {amount, point_type, transaction_date, customer_id}
+                const result = await this.dbClient("points")
+                .insert(insertData)
+                .returning("id");
+                return result[0].id;
+            }
+
+        async redeemByPoint(amount: number,
             point_type: string,
             transaction_date: string,
             customer_id: number) {

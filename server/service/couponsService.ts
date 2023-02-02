@@ -3,7 +3,7 @@ import { Coupons } from "./model";
 
 export class CouponsService {
 	constructor(private dbClient: Knex) {} 
-        async getPoint(customer_id: number) {
+        async getCoupon(customer_id: number) {
             const getCoupons = await this.dbClient<Coupons>("coupons")
                 .select("*")
                 .where("customer_id", customer_id)
