@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
@@ -14,7 +15,7 @@ export default function LabelBottomNavigation() {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
+  let navigate = useNavigate();
   return (
     <BottomNavigation
       sx={{
@@ -27,23 +28,33 @@ export default function LabelBottomNavigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
+      <BottomNavigationAction 
+      onClick={() => navigate("/")}
+      label="Home" 
+      value="home" 
+      icon={<HomeIcon />} 
+      
+      />
       <BottomNavigationAction
+        onClick={() => navigate("/record")}
         label="Report"
         value="report"
         icon={<BarChartIcon />}
       />
       <BottomNavigationAction
+        onClick={() => navigate("/displayQR")}
         label="Scan"
         value="scan"
         icon={<QrCodeScannerIcon />}
       />
       <BottomNavigationAction
+        onClick={() => navigate("/redeem")}
         label="Redeem"
         value="redeem"
         icon={<RedeemIcon />}
       />
       <BottomNavigationAction
+      onClick={() => navigate("/profile")}
         label="Profile"
         value="profile"
         icon={<AccountBoxIcon />}

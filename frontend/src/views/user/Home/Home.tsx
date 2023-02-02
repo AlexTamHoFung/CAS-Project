@@ -9,11 +9,6 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 
@@ -28,12 +23,14 @@ interface Coupon {
   company_id: number;
 }
 
+const { REACT_APP_API_BASE } = process.env;
+
 export default function Home() {
   const [couponList, setCouponList] = useState<Coupon[]>([]);
 
   // fetch here and update couponList
   useEffect(() => {
-    fetch(`http://localhost:8080/listings/getListing`)
+    fetch(`${REACT_APP_API_BASE}/listings/getListing`)
       .then((resp) => resp.json())
       .then((data) => setCouponList(data));
   }, [couponList]);
