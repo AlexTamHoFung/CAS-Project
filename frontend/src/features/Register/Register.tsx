@@ -28,8 +28,8 @@ const Register = () => {
     });
     
    register("email", {required: true});
-   register("password", {minLength: 6});
-   register("phone", {maxLength: 8, minLength: 8});
+   register("password", {required: true, minLength: 6});
+   register("phone", {required: true, minLength: 8, maxLength: 8});
 
   return (
     <div className="container">

@@ -1,0 +1,16 @@
+.scanner {
+    text-align: center;
+    width: 100%;
+}
+
+
+.scan-video {
+    /* width: 70%; */
+    padding: 10% 0 10% 0;
+    text-align: center;
+}
+
+#video{
+    width: 70%;
+    text-align: center;
+}

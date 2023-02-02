@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
 		table.uuid("uuid").defaultTo(knex.raw('gen_random_uuid()'));		
 		table.string("name", 64).notNullable();
 		table.string("email").unique().notNullable();
+		table.string("username", 64).notNullable();
 		table.string("password", 64).notNullable();
 		table.integer("phone").unique().notNullable();
 		table.string("gender");

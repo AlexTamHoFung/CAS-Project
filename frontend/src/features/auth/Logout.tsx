@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../app/store";
 
@@ -15,9 +15,9 @@ export default function Logout() {
     return (
       <div className="logout-bar">
         {isAuthenticated ? (
-          <Button color="info" onClick={clickLogout}>
+          <button color="black" onClick={clickLogout}>
             Logout
-          </Button>
+          </button>
         ) : (
           ""
         )}

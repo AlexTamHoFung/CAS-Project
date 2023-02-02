@@ -9,10 +9,28 @@ import jwt from "../utils/jwt";
 export class CustomersController {
 	constructor(private customersService: CustomersService) {}
 
-	getCustomer = async (req: Request, res: Response) => {
+	getCustomerByPhone = async (req: Request, res: Response) => {
 		try {
 			const { phone } = req.body;
-			const userResult = await this.customersService.getCustomer(phone);
+			const userResult = await this.customersService.getCustomerByPhone(phone);
+
+			if (userResult.length > 0) {
+				res.json({ message: "found customer", data: userResult });
+				return;
+			} else {
+				res.status(400).json({ message: "no such user" });
+			}
+		} catch (error) {
+			logger.error(error.message);
+			res.status(500).json({ message: "internal server error" });
+			
+		}
+	};
+
+	getCustomerByUUID = async (req: Request, res: Response) => {
+		try {
+			const { uuid } = req.body;
+			const userResult = await this.customersService.getCustomerByUUID(uuid);
 
 			if (userResult.length > 0) {
 				res.json({ message: "found customer", data: userResult });
