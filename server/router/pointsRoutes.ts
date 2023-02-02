@@ -5,4 +5,5 @@ import { asyncWrapper } from "../utils/wrapper";
 
 export const pointsRoutes = express.Router();
 pointsRoutes.get("/get", asyncWrapper(pointsController.getPoint));
-pointsRoutes.post("/create", asyncWrapper(pointsController.createPoint));
+pointsRoutes.post("/create", asyncWrapper(pointsController.addPoint));
+pointsRoutes.post("/pointredeem", asyncWrapper(pointsController.redeemByPoint));
