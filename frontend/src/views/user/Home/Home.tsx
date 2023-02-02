@@ -16,6 +16,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
+import { flexbox } from "@mui/system";
 
 interface Coupon {
   id: number;
@@ -41,12 +42,18 @@ export default function Home() {
   return (
     <div className="App">
       <Container fixed>
+
+      
+
+
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
             <CardHeader
               title={coupon.name.toUpperCase()}
               subheader={`Reuired Points: ${coupon.points_required}`}
             />
+            <button style={{backgroundColor: "green", color: "white" }}>Add to cart</button>
+
             <CardMedia component="img" height="200" image={`https://loremflickr.com/240/180?random=${coupon.id}`}/>
             <CardContent>
               <Typography variant="body2" color="text.secondary">

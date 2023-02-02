@@ -13,6 +13,8 @@ import Record from "./views/user/Record/Record";
 
 import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
 import Logout from "./features/auth/Logout";
+import BottomNav from "./features/BottomNav/BottomNav";
+
 
 export default function App() {
   return (
@@ -37,7 +39,7 @@ export default function App() {
           <Route path="shopLogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
-      
+          <BottomNav />
       </div>
    
   );

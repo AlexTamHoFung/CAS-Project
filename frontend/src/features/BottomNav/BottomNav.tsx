@@ -27,7 +27,12 @@ export default function LabelBottomNavigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
+      <BottomNavigationAction 
+      
+      label="Home" 
+      value="home" 
+      icon={<HomeIcon />} />
+      
       <BottomNavigationAction
         label="Report"
         value="report"
