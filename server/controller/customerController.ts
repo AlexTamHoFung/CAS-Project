@@ -32,7 +32,7 @@ export class CustomersController {
 			const { uuid } = req.body;
 			const userResult = await this.customersService.getCustomerByUUID(uuid);
 
-			if (userResult.length > 0) {
+			if (userResult) {
 				res.json({ message: "found customer", data: userResult });
 				return;
 			} else {
@@ -52,7 +52,7 @@ export class CustomersController {
 		if (!email || !password || !regex.test(email) || !phone) {
 			throw new InvalidInfoError();
 		}
-		const is_phone_duplicated = await this.customersService.getCustomer(phone)
+		const is_phone_duplicated = await this.customersService.getCustomerByPhone(phone)
 		if (is_phone_duplicated.length > 0){
 			throw new DuplicatedRegisterError();
 		}
@@ -74,6 +74,7 @@ export class CustomersController {
 	login = async (req: Request, res: Response) => {
 		try {
 			const { email, password } = req.body;
+			console.log (req.body.email);
 			if (!email || !password) {
 				res.status(400).json({ message: "missing username / password" });
 				return;

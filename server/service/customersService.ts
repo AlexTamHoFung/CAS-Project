@@ -8,7 +8,7 @@ export class CustomersService {
 
 	async getCustomerByPhone(phone: number) {
 		const getCustomer = await this.dbClient("customers")
-			.select("phone")
+			.select(phone)
 			.where({ phone: phone });
 
 		return getCustomer;
@@ -17,7 +17,7 @@ export class CustomersService {
 	async getCustomerByUUID(uuid: string) {
 		const getCustomer = await this.dbClient<Customer>("customers")
 			.select("*")
-			.where("uuid", uuid)
+			.where({uuid: uuid})
 			.first();
 
 		return getCustomer;
