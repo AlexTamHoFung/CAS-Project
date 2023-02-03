@@ -57,6 +57,8 @@ Routes map [[updated on 1 FEb 2023]]-->
     ~ req.body -> transaction_date, amount, point_type, customer_id
 ./pointredeem
     ~ req.body -> transaction_date, amount, point_type, customer_id
+./totalpoints
+    ~ req.body -> customer_id
 
 /transactions
 ./get

@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { loginThunk } from "./authSlice";
-import { useAppDispatch } from "../../app/hook";
-import { useNavigate, Link } from "react-router-dom";
-import "./Login.css";
+import { loginThunk } from "../../views/shop/ShopAuth/ShopAuthSlice";
+import { useAppDispatch } from "../../views/shop/ShopAuth/shopHook";
+import { useNavigate } from "react-router-dom";
 
-export function Login() {
+import './ShopLogin.css'
+
+export default function ShopLogin() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useAppDispatch();
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginThunk({ email, password }))
+    dispatch(loginThunk({ username, password }))
       .unwrap()
       .then(() => navigate("/"))
       .catch((err) => {
@@ -20,25 +21,25 @@ export function Login() {
       });
   };
   return (
-    <div id="loginform">
+<div id="shop-loginform">
       <form onSubmit={submitHandler}>
 
-        <div className="headerTitle">
+        <div className="shop-headerTitle">
         <img src={require('./logo.png')} alt="logo" height={"80rem"}/>
-        <h3 >Login</h3>
+        <h3 >商戶登入</h3>
 
         </div>
 
-        <span className="form-row">
-          <label htmlFor="username">Email</label>
+        <span className="shop-form-row">
+          <label htmlFor="username">Username</label>
           <input
-            id="email"
+            id="username"
             type="string"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
           ></input>
-          <label htmlFor="username">Password</label>
+          <label htmlFor="shop-username">Password</label>
           <input
             id="password"
             type="password"
@@ -51,8 +52,10 @@ export function Login() {
           <br/>
 
           <input type="submit" value="submit"></input>
+
         </span>
       </form>
     </div>
-  );
+  )
 }
+

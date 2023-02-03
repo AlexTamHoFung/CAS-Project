@@ -1,5 +1,7 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Header from "./features/Header/Header";
+import { Routes, Route } from "react-router-dom";
 
 import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
@@ -10,9 +12,15 @@ import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
 
-import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
+
+
+
 import Logout from "./features/auth/Logout";
-import React from "react";
+import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
+import PrivateShopRoute from "./views/shop/ShopAuth/PrivateShopRoute";
+import ShopHome from "./views/shop/ShopHome/ShopHome";
+import ShopRedeem from "./views/shop/ShopRedeem/ShopRedeem";
+import ShopLogin from "./features/auth/ShopLogin";
 
 
 
@@ -20,26 +28,33 @@ export default function App() {
   return (
       
     <div className="App">
-
+        
           <Routes>
             <Route path="/" element={<PrivateRoute/>}>             
               <Route element={<Home />} index />
               <Route path="profile" element={<Profile />} />
               <Route path="record" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
-              <Route path="scan" element={<ScanQR />} />
               <Route path="displayQR" element={<DisplayQR />} />
               <Route path="logout" element={<Logout />} />
             </Route>
-            <Route path="/shop" element={<PrivateRoute/>}>
-            <Route element={<Home />} index />
-            <Route path="scan" element={<></>} />
+
+            <Route path="/shop" element={<PrivateShopRoute/>}>
+              <Route path="scan" element={<ScanQR />} />
+              <Route path="shopredeem" element={<ShopRedeem />} />
+            </Route>
+            
+            <Route path="/admin" element={<PrivateRoute/>}>
+              <Route element={<Home />} index />
+              <Route path="scan" element={<ScanQR />} />
+
             </Route>
           <Route path="login" element={<Login />} />
-          <Route path="shopLogin" element={<></>} />
+          <Route path="shop-login" element={<ShopLogin/>} />
+          <Route path="adminlogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
-
+        
       </div>
    
   );

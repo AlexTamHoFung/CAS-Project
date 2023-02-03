@@ -47,4 +47,23 @@ export class PointsController {
 			res.status(400).json({ message: "redeem by point failed" });
 		}
 	}
+
+	showTotalPoint = async (req: Request, res: Response) => {
+		try {
+			const { customer_id } = req.body;
+			const pointResult = await this.pointsService.showTotalPoint(customer_id);
+
+			if (pointResult.length > 0) {
+				res.json({ message: "show total points", data: pointResult });
+				return;
+			} else {
+				res.status(400).json({ message: "no such point record" });
+			}
+		} catch (error) {
+			logger.error(error.message);
+			res.status(500).json({ message: "internal server error" });
+			
+		}
+	}
+
 }

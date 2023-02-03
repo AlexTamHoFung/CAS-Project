@@ -2,24 +2,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
-interface AuthState {
+interface ShopAuthState {
   isAuth: boolean;
-  email: string;
+  username: string;
   loading: boolean;
   error: string | undefined;
 }
 
 interface JWTPayload {
-  email: string;
-  uuid: string;
+  username: string;
 }
+
+
+
 
 const { REACT_APP_API_BASE } = process.env;
 
-let initialState: AuthState;
+let initialState: ShopAuthState;
 initialState = {
   isAuth: !!window.localStorage.getItem("token"),
-  email: "",
+  username: "",
   loading: false,
   error: undefined,
 };
@@ -29,17 +31,17 @@ initialState = {
 // #########
 export const loginThunk = createAsyncThunk<
   string,
-  { email: string; password: string },
+  { username: string; password: string },
   { rejectValue: string }
->("@customers/login", async ({ email, password }, thunkAPI) => {
+>("@companies/login", async ({ username, password }, thunkAPI) => {
   try {
-    const res = await fetch(`${REACT_APP_API_BASE}/customers/login`, {
+    const res = await fetch(`${REACT_APP_API_BASE}/companies/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
+        username: username,
         password: password,
       }),
     });
@@ -52,24 +54,19 @@ export const loginThunk = createAsyncThunk<
 });
 
 // #########
-// authSlice
+// ShopAuthSlice
 // #########
 
-export const authSlice = createSlice({
+export const ShopAuthSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     login: (state, action: PayloadAction<string>) => {
       state.isAuth = true;
-      state.email = action.payload;
+      state.username = action.payload;
       console.log("check action payload", action.payload);
       localStorage.setItem("auth", JSON.stringify(state));
     },
-    logout:(state) => {
-      state.isAuth = false;
-      localStorage.removeItem('token');
-      localStorage.removeItem('uuid');
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -81,7 +78,7 @@ export const authSlice = createSlice({
         console.log("check jwt", action.payload);
         let decoded: JWTPayload = jwt_decode(action.payload);
         console.log("check decoded", decoded);
-        state.email = decoded.email;
+        state.username = decoded.username;
         state.isAuth = true;
 
         localStorage.setItem("token", action.payload);
@@ -93,6 +90,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login } = authSlice.actions;
+export const { login } = ShopAuthSlice.actions;
 
-export default authSlice.reducer;
+export default ShopAuthSlice.reducer;

@@ -13,8 +13,9 @@ import Typography from "@mui/material/Typography";
 
 import Container from "@mui/material/Container";
 import { flexbox } from "@mui/system";
-import Header from "../../../features/Header/Header";
+// import Header from "../../../features/Header/Header";
 import BottomNav from "../../../features/BottomNav/BottomNav";
+import UserHeader from "../../../components/userheader/UserHeader";
 
 interface Coupon {
   id: number;
@@ -38,7 +39,7 @@ export default function Redeem() {
   }, [couponList]);
   return (
     <div>
-      <Header />
+      <UserHeader />
       <Container fixed>
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>

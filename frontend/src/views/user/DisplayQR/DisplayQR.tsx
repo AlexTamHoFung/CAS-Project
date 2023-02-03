@@ -2,8 +2,12 @@
 import { QRCodeCanvas } from "qrcode.react";
 import jwt_decode from "jwt-decode";
 import "./DisplayQR.css"
-import Header from "../../../features/Header/Header";
 import BottomNav from "../../../features/BottomNav/BottomNav";
+import UserHeader from "../../../components/userheader/UserHeader";
+
+import "./DisplayQR.css"
+
+
 
 interface JWTPayload {
   email: string;
@@ -16,8 +20,11 @@ export const DisplayQR = () => {
 
   return (
     <div className="qrcode-canvas">
-      <Header />
-      <div className="welcomemsgs">
+      <UserHeader/>
+      <div className="welcomemsgs" >
+        <br />
+        <br />
+        <br />
         <h1>歡迎你!</h1>        
         <div>
           出示dolphin ID二維碼及賺取積分
@@ -43,8 +50,13 @@ export const DisplayQR = () => {
 
       <h1>Your User ID</h1>
       <p>{payload.uuid}</p>
+      <br />
+      <br />
+      <br />
+      <br />
       <BottomNav />
     </div>
+    
   );
 };
 

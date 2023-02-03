@@ -14,13 +14,13 @@ export class CustomersService {
 		return getCustomer;
 	}
 
-	async getCustomerByUUID(uuid: string) {
-		const getCustomer = await this.dbClient<Customer>("customers")
-			.select("*")
+	async getCustomerIdByUUID(uuid: string) {
+		const getCustomerId = await this.dbClient("customers")
+			.select("id")
 			.where({uuid: uuid})
 			.first();
 
-		return getCustomer;
+		return getCustomerId;
 	}
 
 	async createCustomer(

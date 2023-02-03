@@ -7,7 +7,11 @@ import jwt from "../utils/jwt";
 
 export class CompaniesController {
 	constructor(private companiesService: CompaniesService) {}
+	showCompany = async(req:Request, res:Response) => {
+		const companyResult = await this.companiesService.showCompany()
+		res.json(companyResult)
 
+	}
 	getCompany = async (req: Request, res: Response) => {
 		try {
 			const { username } = req.body;
