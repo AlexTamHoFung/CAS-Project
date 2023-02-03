@@ -27,13 +27,13 @@ export class CustomersController {
 		}
 	};
 
-	getCustomerByUUID = async (req: Request, res: Response) => {
+	getCustomerIdByUUID = async (req: Request, res: Response) => {
 		try {
 			const { uuid } = req.body;
-			const userResult = await this.customersService.getCustomerByUUID(uuid);
+			const userResult = await this.customersService.getCustomerIdByUUID(uuid);
 
 			if (userResult) {
-				res.json({ message: "found customer", data: userResult });
+				res.json({ message: "found customer", customer_id: userResult.id });
 				return;
 			} else {
 				res.status(400).json({ message: "no such user" });

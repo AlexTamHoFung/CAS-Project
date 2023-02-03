@@ -40,12 +40,18 @@ export default function Home() {
   return (
     <div className="App">
       <Container fixed>
+
+      
+
+
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
             <CardHeader
               title={coupon.name.toUpperCase()}
               subheader={`Reuired Points: ${coupon.points_required}`}
             />
+            <button style={{backgroundColor: "green", color: "white" }}>Add to cart</button>
+
             <CardMedia component="img" height="200" image={`https://loremflickr.com/240/180?random=${coupon.id}`}/>
             <CardContent>
               <Typography variant="body2" color="text.secondary">

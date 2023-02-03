@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 10px;
+  padding: 15px 15px;
   background-color: #515151;
   color: white;
   font-weight: 500;
@@ -16,6 +16,6 @@
 }
 
 .Header__right img {
-  width: 55px;
+
   height: 55px;
 }
