@@ -1,5 +1,4 @@
 import "./App.css";
-import Header from "./features/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Login } from "./features/auth/Login";
@@ -13,18 +12,15 @@ import Record from "./views/user/Record/Record";
 
 import { DisplayQR } from "./views/user/DisplayQR/DisplayQR";
 import Logout from "./features/auth/Logout";
-<<<<<<< HEAD
-=======
 import React from "react";
->>>>>>> e84be2166a14bf0b55937216eb5f280fb05d39e8
-import BottomNav from "./features/BottomNav/BottomNav";
+
 
 
 export default function App() {
   return (
       
     <div className="App">
-        <Header />
+
           <Routes>
             <Route path="/" element={<PrivateRoute/>}>             
               <Route element={<Home />} index />
@@ -43,11 +39,7 @@ export default function App() {
           <Route path="shopLogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
-<<<<<<< HEAD
-          <BottomNav />
-=======
-        <BottomNav />
->>>>>>> e84be2166a14bf0b55937216eb5f280fb05d39e8
+
       </div>
    
   );

@@ -28,36 +28,24 @@ export default function LabelBottomNavigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction 
-      onClick={() => navigate("/")}
-      label="Home" 
-      value="home" 
-      icon={<HomeIcon />} 
-      
-      />
       <BottomNavigationAction
-        onClick={() => navigate("/record")}
-        label="Record"
-        value="record"
-        icon={<BarChartIcon />}
+        onClick={() => navigate("/shophome")}
+        label="ShopHome"
+        value="shophome"
+        icon={<HomeIcon />}
       />
+
       <BottomNavigationAction
-        onClick={() => navigate("/displayQR")}
-        label="Scan"
-        value="scan"
+        onClick={() => navigate("/shopscan")}
+        label="ShopScan"
+        value="shopscan"
         icon={<QrCodeScannerIcon />}
       />
       <BottomNavigationAction
-        onClick={() => navigate("/redeem")}
-        label="Redeem"
-        value="redeem"
+        onClick={() => navigate("/shopredeem")}
+        label="ShopHome"
+        value="shophome"
         icon={<RedeemIcon />}
-      />
-      <BottomNavigationAction
-      onClick={() => navigate("/profile")}
-        label="Profile"
-        value="profile"
-        icon={<AccountBoxIcon />}
       />
     </BottomNavigation>
   );

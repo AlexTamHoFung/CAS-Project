@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -9,60 +11,64 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
+
 import Container from "@mui/material/Container";
 import { flexbox } from "@mui/system";
+import BottomNav from "../../../features/BottomNav/BottomNav";
+import Header from "../../../features/Header/Header";
 
-interface Coupon {
+interface Companies {
   id: number;
   name: string;
-  description: string;
+  category: string;
   coupon_type: string;
-  points_required: number;
-  valid_start: string;
-  valid_end: string;
-  company_id: number;
 }
 
 const { REACT_APP_API_BASE } = process.env;
 
 export default function Home() {
-  const [couponList, setCouponList] = useState<Coupon[]>([]);
+  const [shopList, setShopList] = useState<Companies[]>([]);
 
-  // fetch here and update couponList
+  // fetch here and update shopList
   useEffect(() => {
-    fetch(`${REACT_APP_API_BASE}/listings/getListing`)
+    fetch(`${REACT_APP_API_BASE}/companies/showCompany`)
       .then((resp) => resp.json())
-      .then((data) => setCouponList(data));
-  }, [couponList]);
+      .then((data) => setShopList(data));
+  }, [shopList]);
 
   return (
     <div className="App">
+      <Header />
       <Container fixed>
-
-      
-
-
-        {couponList.map((coupon) => (
-          <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
+        {shopList.map((shop) => (
+          <Card key={`shop_${shop.id}`} style={{ marginBottom: 25 }}>
             <CardHeader
-              title={coupon.name.toUpperCase()}
-              subheader={`Reuired Points: ${coupon.points_required}`}
+              title={shop.name.toUpperCase()}
+              subheader={`Reuired Points: ${shop.name}`}
             />
-            <button style={{backgroundColor: "green", color: "white" }}>Add to cart</button>
+            <button
+              style={{ backgroundColor: "rgb(0, 202, 0)", color: "white" }}
+            >
+              Add to cart
+            </button>
 
-            <CardMedia component="img" height="200" image={`https://loremflickr.com/240/180?random=${coupon.id}`}/>
+            <CardMedia
+              component="img"
+              height="200"
+              image={`https://loremflickr.com/240/180?random=${shop.id}`}
+            />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                Date: {coupon.valid_start} - {coupon.valid_end}
+                Date: {shop.name} - {shop.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {coupon.description}
+                {shop.name}
               </Typography>
             </CardContent>
           </Card>
         ))}
       </Container>
+      <BottomNav />
     </div>
   );
 }
