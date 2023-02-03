@@ -4,7 +4,9 @@ import jwt_decode from "jwt-decode";
 import "./DisplayQR.css"
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userheader/UserHeader";
+
 import "./DisplayQR.css"
+
 
 
 interface JWTPayload {

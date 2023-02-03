@@ -5,7 +5,11 @@ import { Companies } from "./model";
 
 export class CompaniesService {
 	constructor(private dbClient: Knex) {}
-
+	async showCompany(){
+		const showCompany = await this.dbClient("companies")
+		.select('*')
+		return showCompany
+	}
 	async getCompany(username: string) {
 		const getCompany = await this.dbClient("companies")
 			.select("username")

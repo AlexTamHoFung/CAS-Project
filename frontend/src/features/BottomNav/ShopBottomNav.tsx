@@ -8,7 +8,6 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import RedeemIcon from "@mui/icons-material/Redeem";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Paper } from "@mui/material";
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
@@ -18,11 +17,10 @@ export default function LabelBottomNavigation() {
   };
   let navigate = useNavigate();
   return (
-    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation
       sx={{
         width: "auto",
-        bottom: 0,
+        botton: 0,
         positon: "fixed",
         backgroundColor: "white",
         zIndex: 100,
@@ -30,38 +28,25 @@ export default function LabelBottomNavigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction 
-      onClick={() => navigate("/")}
-      label="Home" 
-      value="home" 
-      icon={<HomeIcon />} 
-      
-      />
       <BottomNavigationAction
-        onClick={() => navigate("/record")}
-        label="Record"
-        value="record"
-        icon={<BarChartIcon />}
+        onClick={() => navigate("/shophome")}
+        label="ShopHome"
+        value="shophome"
+        icon={<HomeIcon />}
       />
+
       <BottomNavigationAction
-        onClick={() => navigate("/displayQR")}
-        label="Scan"
-        value="scan"
+        onClick={() => navigate("/shopscan")}
+        label="ShopScan"
+        value="shopscan"
         icon={<QrCodeScannerIcon />}
       />
       <BottomNavigationAction
-        onClick={() => navigate("/redeem")}
-        label="Redeem"
-        value="redeem"
+        onClick={() => navigate("/shopredeem")}
+        label="ShopHome"
+        value="shophome"
         icon={<RedeemIcon />}
       />
-      <BottomNavigationAction
-      onClick={() => navigate("/profile")}
-        label="Profile"
-        value="profile"
-        icon={<AccountBoxIcon />}
-      />
     </BottomNavigation>
-    </Paper>
   );
 }

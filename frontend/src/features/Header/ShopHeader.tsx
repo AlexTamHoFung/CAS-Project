@@ -1,26 +1,20 @@
-import "./Header.css";
+import React from 'react'
 import logo from './headlogo.png';
 import { useNavigate } from "react-router-dom";
 
-
-function Header (){
+export default function ShopHeader() {
   let navigate = useNavigate();
   return (
-    <div className="Header__container">
-      <div className="Header__left">
+    <div className="ShopHeader__container">
+      <div className="ShopHeader__left">
         <div>EN | 中</div>
         <div>常見問題</div>
       </div>
 
-      <div className="Header__right">
+      <div className="ShopHeader__right">
         <img src={logo} alt='logo' />
         <button onClick={() => navigate("/login")}>Logout</button>
       </div>
     </div>
-
   )
-};
-
-
-
-export default Header;
+}

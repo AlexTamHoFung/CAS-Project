@@ -1,21 +1,21 @@
-.Header__container {
+.ShopHeader__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 15px;
-  background-color: #55B4B7;
+  background-color: #FF6B00;
   color: white;
   font-weight: 500;
   margin-bottom: 25px;
 }
 
-.Header__left {
+.ShopHeader__left {
   display: flex;
   width: 20%;
   justify-content: space-around;
 }
 
-.Header__right img {
+.ShopHeader__right img {
 
   height: 55px;
 }
