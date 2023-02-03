@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
+import UserHeader from "../../../components/userheader/UserHeader";
 
 interface Coupon {
   id: number;
@@ -22,7 +23,6 @@ interface Coupon {
 interface Point {
   id: number;
   customer_id: number;
-  
 }
 
 const { REACT_APP_API_BASE } = process.env;
@@ -39,6 +39,7 @@ export default function Home() {
 
   return (
     <div className="App">
+      <UserHeader />
       <Container fixed>
 
       
