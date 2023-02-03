@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Record() {
+const Record = () => {
   return (
     <div>
-      Record
+      
     </div>
   )
 }
+
+export default Record

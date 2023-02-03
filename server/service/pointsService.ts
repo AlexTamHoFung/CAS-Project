@@ -32,11 +32,12 @@ export class PointsService {
                 return result[0].id;
             }
 
-        async showTotalPoint(customer_id: number) {
+        async showTotalPoint(uuid: number) {
             const totalPoints = await this.dbClient("points")
-                .sum("amount")
-                .where("customer_id", customer_id)
-            return totalPoints;
+                .sum("points.amount")
+                .join("customers", "points.customer_id", "customers.id")
+                .where("customers.uuid", uuid)
+            return totalPoints[0].sum;
         }
 
     }

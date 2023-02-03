@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userheader/UserHeader";
+import dayjs from "dayjs";
+
 
 interface Coupon {
   id: number;
@@ -20,10 +22,6 @@ interface Coupon {
   company_id: number;
 }
 
-interface Point {
-  id: number;
-  customer_id: number;
-}
 
 const { REACT_APP_API_BASE } = process.env;
 
@@ -40,11 +38,13 @@ export default function Home() {
   return (
     <div className="App">
       <UserHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Container fixed>
-
-      
-
-
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
             <CardHeader
@@ -65,6 +65,15 @@ export default function Home() {
           </Card>
         ))}
       </Container>
+      <br />
+      <br />
+      <br />
+      <br />
+      <p>暫未有其他優惠</p>
+      <br />
+      <br />
+      <br />
+      <br />
       <BottomNav />
     </div>
   );

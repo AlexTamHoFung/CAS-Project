@@ -33,7 +33,7 @@ export const DisplayQR = () => {
         value={payload.uuid}
         size={400}
         bgColor={"#ffffff"}
-        fgColor={"pink"}
+        fgColor={"black"}
         level={"H"}
         includeMargin={true}
         imageSettings={{

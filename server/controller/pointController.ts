@@ -50,12 +50,16 @@ export class PointsController {
 
 	showTotalPoint = async (req: Request, res: Response) => {
 		try {
-			const { customer_id } = req.body;
-			const pointResult = await this.pointsService.showTotalPoint(customer_id);
+			const { uuid } = req.body;
+			const pointResult = await this.pointsService.showTotalPoint(uuid);
+			const result = {
+				uuid: uuid,
+				amount: pointResult
+			}
 
 			if (pointResult.length > 0) {
-				res.json({ message: "show total points", data: pointResult });
-				return;
+				res.json({ message: "show total points", data: result });
+				return
 			} else {
 				res.status(400).json({ message: "no such point record" });
 			}
