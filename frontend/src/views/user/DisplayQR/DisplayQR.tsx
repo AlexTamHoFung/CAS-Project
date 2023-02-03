@@ -2,6 +2,8 @@
 import { QRCodeCanvas } from "qrcode.react";
 import jwt_decode from "jwt-decode";
 import "./DisplayQR.css"
+import BottomNav from "../../../features/BottomNav/BottomNav";
+
 
 interface JWTPayload {
   email: string;
@@ -40,7 +42,9 @@ export const DisplayQR = () => {
 
       <h1>Your User ID</h1>
       <p>{payload.uuid}</p>
+      <BottomNav />
     </div>
+    
   );
 };
 

@@ -32,13 +32,12 @@ function App() {
             </Route>
             <Route path="/shop" element={<PrivateRoute/>}>
             <Route element={<Home />} index />
-            <Route path="scan" element={<></>} />
+            <Route path="scan" element={<ScanQR />} />
             </Route>
           <Route path="login" element={<Login />} />
           <Route path="shopLogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />
           </Routes>
-        <BottomNav />
       </div>
    
   );

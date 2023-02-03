@@ -20,7 +20,7 @@ export default function LabelBottomNavigation() {
     <BottomNavigation
       sx={{
         width: "auto",
-        botton: 0,
+        bottom: 0,
         positon: "fixed",
         backgroundColor: "white",
         zIndex: 100,

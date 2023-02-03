@@ -1,16 +1,12 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
+import BottomNav from "../../../features/BottomNav/BottomNav";
 
 interface Coupon {
   id: number;
@@ -21,6 +17,12 @@ interface Coupon {
   valid_start: string;
   valid_end: string;
   company_id: number;
+}
+
+interface Point {
+  id: number;
+  customer_id: number;
+  
 }
 
 const { REACT_APP_API_BASE } = process.env;
@@ -56,6 +58,7 @@ export default function Home() {
           </Card>
         ))}
       </Container>
+      <BottomNav />
     </div>
   );
 }
