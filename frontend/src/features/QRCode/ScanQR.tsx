@@ -36,6 +36,7 @@ const ScanQR = () => {
       <br />
       <br />
       <br />
+      <p>ACC ID: {result}</p>
       <MyQrReader
         delay={300}
         onError={(error: { message: SetStateAction<null> }) => {
@@ -48,10 +49,9 @@ const ScanQR = () => {
             console.log(data.getText());
           }
         }}
-        videoStyle={{ width: "60%", screenLeft: "20%" }}
+        videoStyle={{ width: "60%", height: "60%",screenLeft: "20%", marginLeft:225, marginRight:225 }}
         className={"scan-video"}
       />
-      <p>ACC ID: {result}</p>
       <br />
       <br />
       <br />

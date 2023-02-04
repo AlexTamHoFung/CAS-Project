@@ -102,6 +102,8 @@ function ResponsiveAppBar() {
             DOLPHIN
           </Typography>
 
+          <button>Logout</button>
+
 
           {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
