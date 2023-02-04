@@ -21,6 +21,11 @@ export const DisplayQR = () => {
   return (
     <div className="qrcode-canvas">
       <UserHeader/>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="welcomemsgs" >
         <br />
         <br />

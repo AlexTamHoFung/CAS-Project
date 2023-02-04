@@ -1,24 +1,25 @@
-
-import React, { useState } from 'react';
-import UserHeader from '../../../components/userheader/UserHeader';
-import BottomNav from '../../../features/BottomNav/BottomNav';
-
+import React, { useState } from "react";
+import UserHeader from "../../../components/userheader/UserHeader";
+import BottomNav from "../../../features/BottomNav/BottomNav";
 
 export default function Profile() {
-
   const [email, setEmail] = useState("");
   return (
     <div>
-      <UserHeader/>
+      <UserHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
-      <input 
-      id= "email"
-      type="string"
-      value={email}
-      
-      
-      />
-      <BottomNav/>
+      <input id="email" type="string" value={email} />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <BottomNav />
     </div>
   );
 }
