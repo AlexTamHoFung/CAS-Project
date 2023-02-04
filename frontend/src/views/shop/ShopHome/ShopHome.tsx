@@ -7,7 +7,17 @@ export default function ShopHome() {
   return (
     <div>
       <ShopHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div>Welcome to Start~</div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <ShopBottomNav />
     </div>
   );

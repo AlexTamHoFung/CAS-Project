@@ -7,6 +7,17 @@ const Record = () => {
   return (
     <div>
       <UserHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <BottomNav />
     </div>
   );

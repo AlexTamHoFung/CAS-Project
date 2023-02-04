@@ -31,6 +31,11 @@ const ScanQR = () => {
   return (
     <div className="scanner">
       <ShopHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <MyQrReader
         delay={300}
         onError={(error: { message: SetStateAction<null> }) => {
@@ -47,6 +52,11 @@ const ScanQR = () => {
         className={"scan-video"}
       />
       <p>ACC ID: {result}</p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <ShopBottomNav />
     </div>
   );

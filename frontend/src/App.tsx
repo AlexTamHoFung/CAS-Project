@@ -40,6 +40,7 @@ export default function App() {
             </Route>
 
             <Route path="/shop" element={<PrivateShopRoute/>}>
+              <Route element={<ShopHome />} index />
               <Route path="scan" element={<ScanQR />} />
               <Route path="shopredeem" element={<ShopRedeem />} />
             </Route>
