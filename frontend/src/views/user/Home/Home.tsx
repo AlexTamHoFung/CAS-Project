@@ -1,19 +1,11 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 import Container from "@mui/material/Container";
-import { flexbox } from "@mui/system";
-// import Header from "../../../features/Header/Header";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userheader/UserHeader";
 
@@ -36,6 +28,7 @@ export default function Redeem() {
     fetch(`${REACT_APP_API_BASE}/listings/getListing`)
       .then((resp) => resp.json())
       .then((data) => setCouponList(data));
+
   }, [couponList]);
   return (
     <div>

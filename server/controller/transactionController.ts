@@ -7,8 +7,8 @@ export class TransactionsController {
 
     getTransaction = async (req: Request, res: Response) => {
 		try {
-			const { customer_id } = req.body;
-			const transactionResult = await this.transactionsService.getTransaction(customer_id);
+			const { uuid } = req.body;
+			const transactionResult = await this.transactionsService.getTransaction(uuid);
 
 			if (transactionResult.length > 0) {
 				res.json({ message: "found transaction", data: transactionResult });

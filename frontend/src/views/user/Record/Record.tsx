@@ -1,12 +1,90 @@
-import React from "react";
+import { Card, CardContent, CardHeader, Container, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import UserHeader from "../../../components/userheader/UserHeader";
 import BottomNav from "../../../features/BottomNav/BottomNav";
+import jwt_decode from "jwt-decode";
 
+interface JWTPayload {
+  email: string;
+  uuid: string;
+}
+
+interface Transaction {
+    id: number;
+    name: string;
+    transaction_date: string;
+    amount: number;
+    payment_method: string
+}
+
+const { REACT_APP_API_BASE } = process.env;
 
 const Record = () => {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const token = localStorage.getItem("token")!;
+    let payload: JWTPayload = jwt_decode(token);
+    console.log(payload.uuid);
+    const fetchData = async () => {
+      const resp = await fetch(`${REACT_APP_API_BASE}/transactions/get`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uuid: payload.uuid }),
+      });
+      const data = await resp.json();
+      console.log("data", data.data);
+
+      // if (isMounted) {
+        setTransactions(data.data)
+      // }
+    };
+    fetchData();
+    // return () => {
+    //   isMounted = false;
+    // };
+  
+  
+  },[]
+
+  )
+  console.log("is trans",transactions)
   return (
     <div>
       <UserHeader />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+      <Container fixed>
+        {transactions.map((trans, index) => (
+          <Card key={index} style={{ marginBottom: 25 }}>
+            <CardHeader
+              title={trans.name.toUpperCase()}
+              subheader={`Collected Points: ${trans.amount}`}
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                Date: {trans.transaction_date}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {trans.payment_method}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </Container>
+      <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
       <BottomNav />
     </div>
   );

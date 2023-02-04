@@ -3,10 +3,13 @@ import { Transactions } from "./model";
 
 export class TransactionsService {
 	constructor(private dbClient: Knex) {} 
-        async getTransaction(customer_id: number) {
+        async getTransaction(uuid:string) {
             const getTransactions = await this.dbClient<Transactions>("transactions")
                 .select("*")
-                .where("customer_id", customer_id)
+                .join("customers", "transactions.customer_id", "customers.id")
+                .join("store_users", "transactions.store_user_id", "store_users.id")
+                .join("companies", "store_users.company_id", "companies.id")
+                .where("customers.uuid", uuid)
             return getTransactions;
         }
 

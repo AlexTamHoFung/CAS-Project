@@ -37,3 +37,10 @@
   margin-top: 17px;
   margin-left: 15px;
 }
+
+
+.MuiContainer-root.MuiContainer-maxWidthLg.Userheader__toolbar.css-1oqqzyl-MuiContainer-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -4,6 +4,6 @@ import { transactionsController } from "../routes";
 import { asyncWrapper } from "../utils/wrapper";
 
 export const transactionsRoutes = express.Router();
-transactionsRoutes.get("/get", asyncWrapper(transactionsController.getTransaction));
+transactionsRoutes.post("/get", asyncWrapper(transactionsController.getTransaction));
 transactionsRoutes.post("/create", asyncWrapper(transactionsController.createTransaction));
 

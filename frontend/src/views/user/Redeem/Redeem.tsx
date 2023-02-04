@@ -40,6 +40,11 @@ export default function Redeem() {
   return (
     <div>
       <UserHeader />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Container fixed>
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
@@ -70,6 +75,11 @@ export default function Redeem() {
           </Card>
         ))}
       </Container>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <BottomNav />
     </div>
   );

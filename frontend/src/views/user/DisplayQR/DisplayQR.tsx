@@ -33,7 +33,7 @@ export const DisplayQR = () => {
       </div>
       <QRCodeCanvas
         value={payload.uuid}
-        size={400}
+        size={225}
         bgColor={"#ffffff"}
         fgColor={"black"}
         level={"H"}
