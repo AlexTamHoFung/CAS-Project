@@ -1,3 +1,3 @@
 import {hashPassword} from "./utils/hash"
 
-hashPassword("1234")
+console.log(hashPassword("1234"))

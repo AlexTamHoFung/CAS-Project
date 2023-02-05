@@ -16,6 +16,7 @@ import logo from "./logo.png";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import "./UserHeader.css"
+import Logout from "../../features/auth/Logout";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
