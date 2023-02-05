@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../app/store";
 
 export default function Logout() {
+
+  
     const isAuthenticated = useSelector(
       (state: IRootState) => state.auth.isAuth
     );

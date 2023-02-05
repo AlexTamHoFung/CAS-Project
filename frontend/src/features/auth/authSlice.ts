@@ -17,6 +17,13 @@ interface JWTPayload {
 const { REACT_APP_API_BASE } = process.env;
 
 let initialState: AuthState;
+
+
+
+
+
+
+
 initialState = {
   isAuth: !!window.localStorage.getItem("token"),
   email: "",

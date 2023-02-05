@@ -16,6 +16,7 @@ import logo from "./logo.png";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import "./UserHeader.css"
+import Logout from "../../features/auth/Logout";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -59,6 +60,7 @@ function ResponsiveAppBar() {
   }, []);
 
 
+
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -79,12 +81,14 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            <Box>你的積分 : {points}</Box>
+
           </Typography>
+          <Box>你的積分 : {points}</Box>
           <Avatar alt="" src={logo} sx={{ width: 80, height: 56 }} variant="square"/>
           </Container>
 
         </Toolbar>
+        <button onClick={()=>( localStorage.removeItem('token'))}>Logout</button>
       </Container>
     </AppBar>
   );
