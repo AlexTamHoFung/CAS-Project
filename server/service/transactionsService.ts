@@ -19,11 +19,23 @@ export class TransactionsService {
             collect_point: boolean,
             is_refund: boolean,
             store_user_id: number,
-            customer_id: number) {
-                const insertData = {transaction_date, amount, payment_method, collect_point, is_refund, store_user_id, customer_id}
+            uuid:string) {
+                const insertData = {transaction_date, amount, payment_method, collect_point, is_refund, store_user_id}
+                if (collect_point == false){
                 const result = await this.dbClient("transactions")
                 .insert(insertData)
                 .returning("id");
                 return result[0].id;
             }
+         else { const id = await this.dbClient("customers")
+                .select("id")
+                .where("uuid", uuid)
+                .returning("id")
+
+                const result = await this.dbClient("transactions")
+                .insert(insertData, id)
+                .returning("id");
+                return result[0].id
+        }
     }
+}

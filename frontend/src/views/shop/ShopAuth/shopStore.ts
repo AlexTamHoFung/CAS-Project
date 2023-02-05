@@ -3,6 +3,7 @@ import logger from "redux-logger";
 import ShopAuthReducer from "./ShopAuthSlice";
 
 
+
 export const store = configureStore({
   reducer: { auth: ShopAuthReducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
