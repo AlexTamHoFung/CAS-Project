@@ -18,7 +18,7 @@ export default function Logout() {
     return (
       <div className="logout-bar">
         {isAuthenticated ? (
-          <Button color="info" onClick={clickLogout}>
+          <Button color="error" onClick={clickLogout}>
             Logout
           </Button>
         ) : (

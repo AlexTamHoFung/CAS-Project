@@ -4,10 +4,10 @@ import { useAppSelector } from "../../../app/hook";
 
 
 export default function PrivateShopRoute() {
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const isShopAuth = useAppSelector((state) => state.auth.isAuth);
   const location = useLocation();
 
-  if (!isAuth) {
+  if (!isShopAuth) {
     return <Navigate to="/shop-login" state={{ from: location }} replace />;
   }
   return <Outlet />;
