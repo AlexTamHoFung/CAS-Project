@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useAppSelector } from "./shopHook";
+import { useAppSelector } from "../../../app/hook";
 
 
 export default function PrivateShopRoute() {

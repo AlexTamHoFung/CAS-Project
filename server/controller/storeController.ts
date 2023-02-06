@@ -67,9 +67,9 @@ export class StoresController {
 					uuid: store.id,
 					username: store.username
 				};
-				const token = jwtSimple.encode(payload, jwt.jwtSecret);
+				const shopToken = jwtSimple.encode(payload, jwt.jwtSecret);
 
-				res.json({ message: "login success", data: token });
+				res.json({ message: "login success", data: shopToken });
 			}
 		} catch (error) {
 			logger.error(error.message);

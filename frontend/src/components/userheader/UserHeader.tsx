@@ -87,8 +87,9 @@ function ResponsiveAppBar() {
           <Avatar alt="" src={logo} sx={{ width: 80, height: 56 }} variant="square"/>
           </Container>
 
+        <Logout />
         </Toolbar>
-        <button onClick={()=>( localStorage.removeItem('token'))}>Logout</button>
+
       </Container>
     </AppBar>
   );
