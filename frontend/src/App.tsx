@@ -21,6 +21,7 @@ import PrivateShopRoute from "./views/shop/ShopAuth/PrivateShopRoute";
 import ShopHome from "./views/shop/ShopHome/ShopHome";
 import ShopRedeem from "./views/shop/ShopRedeem/ShopRedeem";
 import ShopLogin from "./features/auth/ShopLogin";
+import Register from "./features/Register/Register";
 
 
 
@@ -51,6 +52,7 @@ export default function App() {
 
             </Route>
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="shop-login" element={<ShopLogin/>} />
           <Route path="adminlogin" element={<></>} />
           <Route path="*" element={<>404 : Page Not Found</>} />

@@ -2,30 +2,30 @@ import type { Request, Response } from "express";
 import { logger } from "../utils/logger";
 import { CustomersService } from "../service/customersService";
 import { checkPassword } from "../utils/hash";
-import {  InvalidInfoError, DuplicatedRegisterError} from "../utils/error";
+import {  InvalidInfoError} from "../utils/error";
 import jwtSimple from "jwt-simple";
 import jwt from "../utils/jwt";
 
 export class CustomersController {
 	constructor(private customersService: CustomersService) {}
 
-	getCustomerByPhone = async (req: Request, res: Response) => {
-		try {
-			const { phone } = req.body;
-			const userResult = await this.customersService.getCustomerByPhone(phone);
+	// getCustomerByPhone = async (req: Request, res: Response) => {
+	// 	try {
+	// 		const { phone } = req.body;
+	// 		const userResult = await this.customersService.getCustomerByPhone(phone);
 
-			if (userResult.length > 0) {
-				res.json({ message: "found customer", data: userResult });
-				return;
-			} else {
-				res.status(400).json({ message: "no such user" });
-			}
-		} catch (error) {
-			logger.error(error.message);
-			res.status(500).json({ message: "internal server error" });
+	// 		if (userResult.length > 0) {
+	// 			res.json({ message: "found customer", data: userResult });
+	// 			return;
+	// 		} else {
+	// 			res.status(400).json({ message: "no such user" });
+	// 		}
+	// 	} catch (error) {
+	// 		logger.error(error.message);
+	// 		res.status(500).json({ message: "internal server error" });
 			
-		}
-	};
+	// 	}
+	// };
 
 	getCustomerIdByUUID = async (req: Request, res: Response) => {
 		try {
@@ -52,10 +52,10 @@ export class CustomersController {
 		if (!email || !password || !regex.test(email) || !phone) {
 			throw new InvalidInfoError();
 		}
-		const is_phone_duplicated = await this.customersService.getCustomerByPhone(phone)
-		if (is_phone_duplicated.length > 0){
-			throw new DuplicatedRegisterError();
-		}
+		// const is_phone_duplicated = await this.customersService.getCustomerByPhone(phone)
+		// if (is_phone_duplicated.length > 0){
+		// 	throw new DuplicatedRegisterError();
+		// }
 
 		const customer = await this.customersService.createCustomer(
 			name,

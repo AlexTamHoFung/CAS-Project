@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-
 import { useNavigate } from "react-router-dom";
 
-import './ShopLogin.css'
+import "./ShopLogin.css";
 import { shopLoginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
 
@@ -23,13 +22,11 @@ export default function ShopLogin() {
       });
   };
   return (
-<div id="shop-loginform">
+    <div id="shop-loginform">
       <form onSubmit={submitHandler}>
-
         <div className="shop-headerTitle">
-        <img src={require('./logo.png')} alt="logo" height={"80rem"}/>
-        <h3 >商戶登入</h3>
-
+          <img src={require("./logo.png")} alt="logo" height={"80rem"} />
+          <h3>商戶登入</h3>
         </div>
 
         <span className="shop-form-row">
@@ -49,15 +46,18 @@ export default function ShopLogin() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
           ></input>
-          
 
-          <br/>
+          <br />
 
           <input type="submit" value="submit"></input>
-
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <a href="/login" style={{color:"white"}}>轉換至普通用戶</a>
         </span>
       </form>
     </div>
-  )
+  );
 }
-
