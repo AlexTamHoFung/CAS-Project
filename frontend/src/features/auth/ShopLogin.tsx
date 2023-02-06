@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { loginThunk } from "../../views/shop/ShopAuth/ShopAuthSlice";
-import { useAppDispatch } from "../../views/shop/ShopAuth/shopHook";
+
+
 import { useNavigate } from "react-router-dom";
 
 import './ShopLogin.css'
+import { shopLoginThunk } from "./authSlice";
+import { useAppDispatch } from "../../app/hook";
 
 export default function ShopLogin() {
   const navigate = useNavigate();
@@ -13,9 +15,9 @@ export default function ShopLogin() {
   const dispatch = useAppDispatch();
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginThunk({ username, password }))
+    dispatch(shopLoginThunk({ username, password }))
       .unwrap()
-      .then(() => navigate("/"))
+      .then(() => navigate("/shop"))
       .catch((err) => {
         alert(err.message);
       });

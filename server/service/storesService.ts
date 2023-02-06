@@ -7,14 +7,14 @@ export class StoresService {
 	constructor(private dbClient: Knex) {}
 
 	async getStore(username: string) {
-		const getStore = await this.dbClient("stores")
+		const getStore = await this.dbClient("store_users")
 			.select("username")
 			.where({ username: username });
 		return getStore;
 	}
 
 	async getStoreByID(id: string) {
-		const getStore = await this.dbClient<Stores>("stores")
+		const getStore = await this.dbClient<Stores>("store_users")
 			.select("*")
 			.where("id", id)
 			.first();
@@ -30,13 +30,13 @@ export class StoresService {
         size: string,
         company_id: number
 	) {
-		const store = await this.dbClient("stores")
+		const store = await this.dbClient("store_users")
 			.where("username", "=", username)
 			.first(["id", "name", "username", "password","location","size","company_id"]);
 		if (!store) {
 			password = await hashPassword(password);
 			const insertData = { name, username, password, location, size, company_id };
-			const result = await this.dbClient("stores")
+			const result = await this.dbClient("store_users")
 				.insert(insertData)
 				.returning("id");
 			return result[0].id;
@@ -46,7 +46,7 @@ export class StoresService {
 
 	async checkStore(username: string ) {
 		const store = await this.dbClient.select("*")
-		.from<Stores>("stores")
+		.from<Stores>("store_users")
 			.where({ username: username })
 			.first(["id", "username", "password"]);
 			return store;

@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
 interface ShopAuthState {
-  isAuth: boolean;
+  isShopAuth: boolean;
   username: string;
   loading: boolean;
   error: string | undefined;
@@ -20,7 +20,7 @@ const { REACT_APP_API_BASE } = process.env;
 
 let initialState: ShopAuthState;
 initialState = {
-  isAuth: !!window.localStorage.getItem("token"),
+  isShopAuth: !!window.localStorage.getItem("shopToken"),
   username: "",
   loading: false,
   error: undefined,
@@ -29,13 +29,13 @@ initialState = {
 // #########
 // Thunk
 // #########
-export const loginThunk = createAsyncThunk<
+export const storeLoginThunk = createAsyncThunk<
   string,
   { username: string; password: string },
   { rejectValue: string }
->("@companies/login", async ({ username, password }, thunkAPI) => {
+>("@stores/login", async ({ username, password }, thunkAPI) => {
   try {
-    const res = await fetch(`${REACT_APP_API_BASE}/companies/login`, {
+    const res = await fetch(`${REACT_APP_API_BASE}/stores/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,8 +46,8 @@ export const loginThunk = createAsyncThunk<
       }),
     });
 
-    const JWT_token = await res.json();
-    return JWT_token.data;
+    const JWT_shopToken = await res.json();
+    return JWT_shopToken.data;
   } catch (error) {
     return thunkAPI.rejectWithValue("AUTH Login failed");
   }
@@ -61,8 +61,8 @@ export const ShopAuthSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<string>) => {
-      state.isAuth = true;
+    shopLogin: (state, action: PayloadAction<string>) => {
+      state.isShopAuth = true;
       state.username = action.payload;
       console.log("check action payload", action.payload);
       localStorage.setItem("auth", JSON.stringify(state));
@@ -70,26 +70,26 @@ export const ShopAuthSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginThunk.pending, (state) => {
+      .addCase(storeLoginThunk.pending, (state) => {
         state.loading = true;
       })
-      .addCase(loginThunk.fulfilled, (state, action) => {
+      .addCase(storeLoginThunk.fulfilled, (state, action) => {
         state.loading = false;
         console.log("check jwt", action.payload);
         let decoded: JWTPayload = jwt_decode(action.payload);
         console.log("check decoded", decoded);
         state.username = decoded.username;
-        state.isAuth = true;
+        state.isShopAuth = true;
 
-        localStorage.setItem("token", action.payload);
+        localStorage.setItem("shopToken", action.payload);
       })
-      .addCase(loginThunk.rejected, (state, action) => {
+      .addCase(storeLoginThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export const { login } = ShopAuthSlice.actions;
+export const { shopLogin } = ShopAuthSlice.actions;
 
 export default ShopAuthSlice.reducer;

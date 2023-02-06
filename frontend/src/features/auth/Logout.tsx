@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../app/store";
-
+import { logout } from "./authSlice"
 export default function Logout() {
 
   
@@ -12,7 +12,7 @@ export default function Logout() {
     const dispatch = useDispatch();
   
     const clickLogout = () => {
-      dispatch(Logout());
+      dispatch(logout());
     };
   
     return (

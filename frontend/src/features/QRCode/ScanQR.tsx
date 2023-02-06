@@ -34,12 +34,14 @@ const { REACT_APP_API_BASE } = process.env;
 
 
 const ScanQR = () => {
-  const [collect, setCollect] = useState();
+  const [collect, setCollect] = useState(false);
   const [amount, setAmount] = useState("");
 
 
 
   useEffect (() => {
+
+    
     
   })
 
