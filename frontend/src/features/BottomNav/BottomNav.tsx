@@ -27,10 +27,10 @@ const pathConfig = [
     key: "redeem",
     path: "/redeem",
   },
-  {
-    key: "profile",
-    path: "/profile",
-  },
+  // {
+  //   key: "profile",
+  //   path: "/profile",
+  // },
 ];
 
 export default function BottomNav() {
@@ -82,11 +82,11 @@ export default function BottomNav() {
           value="redeem"
           icon={<RedeemIcon />}
         />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           label="Profile"
           value="profile"
           icon={<AccountBoxIcon />}
-        />
+        /> */}
       </BottomNavigation>
     </Paper>
   );

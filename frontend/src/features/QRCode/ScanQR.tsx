@@ -18,6 +18,8 @@ import {
 import { OnResultFunction, QrReader } from "react-qr-reader";
 import { SetStateAction, useEffect, useState } from "react";
 
+
+
 // For scanner
 const MyQrReader: React.FC<{
   onError: (err: any) => void;

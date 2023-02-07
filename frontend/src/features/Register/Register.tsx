@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./Register.css";
 import { useAppDispatch } from "../../app/hook";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,10 @@ type FormValues = {
   phone: string;
 };
 
+
+
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -92,7 +95,9 @@ const Register = () => {
             {errors.phone && <p className="error">？</p>}
           </p>
 
-          <input type="submit" value="submit" />
+          <input type="submit" value="submit"/>
+
+          <a href="/login" style={{color:"white"}}>Back</a>
         </span>
       </form>
     </div>
