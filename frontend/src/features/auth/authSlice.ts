@@ -118,7 +118,7 @@ export const authSlice = createSlice({
       localStorage.removeItem('token');
     },
     shopLogout:(state) => {
-      state.isAuth = false;
+      state.isShopAuth = false;
       state.username = ""
       localStorage.removeItem('shopToken');
     }
@@ -163,41 +163,6 @@ export const authSlice = createSlice({
       });
   },
 });
-
-
-// export const ShopAuthSlice = createSlice({
-//   name: "shopAuth",
-//   shopInitialState,
-//   reducers: {
-//     shopLogin: (state, action: PayloadAction<string>) => {
-//       state.isAuth = true;
-//       state.username = action.payload;
-//       console.log("check action payload", action.payload);
-//       localStorage.setItem("auth", JSON.stringify(state));
-//     },
-//   },
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(shopLoginThunk.pending, (state) => {
-//         state.loading = true;
-//       })
-//       .addCase(shopLoginThunk.fulfilled, (state, action) => {
-//         state.loading = false;
-//         console.log("check jwt", action.payload);
-//         let decoded: ShopJWTPayload = jwt_decode(action.payload);
-//         console.log("check decoded", decoded);
-//         state.username = decoded.username;
-//         state.isAuth = true;
-
-//         localStorage.setItem("shopToken", action.payload);
-//       })
-//       .addCase(shopLoginThunk.rejected, (state, action) => {
-//         state.loading = false;
-//         state.error = action.payload;
-//       });
-//   },
-// });
-
 
 
 export const { shopLogin } = authSlice.actions;
