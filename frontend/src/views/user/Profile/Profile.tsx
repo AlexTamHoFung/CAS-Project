@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserHeader from "../../../components/userheader/UserHeader";
+import UserHeader from "../../../components/userHeader/UserHeader";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 
 export default function Profile() {

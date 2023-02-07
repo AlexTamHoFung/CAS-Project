@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import UserHeader from "../../../components/userheader/UserHeader";
+import UserHeader from "../../../components/userHeader/UserHeader";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import jwt_decode from "jwt-decode";
 

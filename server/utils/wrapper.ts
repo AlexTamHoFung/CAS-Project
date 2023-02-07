@@ -9,8 +9,7 @@ export const asyncWrapper =
 		try {
 			await routeHandler(req, res);
 		} catch (err) {
-			console.log("wrapper");
-			console.log((err as any).message);
+			console.log(err.message);
 			if (err instanceof ApplicationError) {
 				next(err);
 			}

@@ -15,7 +15,7 @@ import Container from "@mui/material/Container";
 import { flexbox } from "@mui/system";
 // import Header from "../../../features/Header/Header";
 import BottomNav from "../../../features/BottomNav/BottomNav";
-import UserHeader from "../../../components/userheader/UserHeader";
+import UserHeader from "../../../components/userHeader/UserHeader";
 
 interface Coupon {
   id: number;

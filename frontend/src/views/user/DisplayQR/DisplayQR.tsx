@@ -3,7 +3,7 @@ import { QRCodeCanvas } from "qrcode.react";
 import jwt_decode from "jwt-decode";
 import "./DisplayQR.css"
 import BottomNav from "../../../features/BottomNav/BottomNav";
-import UserHeader from "../../../components/userheader/UserHeader";
+import UserHeader from "../../../components/userHeader/UserHeader";
 
 import "./DisplayQR.css"
 

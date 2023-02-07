@@ -1,7 +1,9 @@
 import React from "react";
+import ShopHeader from "../../../components/shopHeader/ShopHeader";
 
-import ShopHeader from "../../../components/shopheader/ShopHeader";
+
 import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
+
 
 export default function ShopHome() {
   return (
@@ -12,7 +14,9 @@ export default function ShopHome() {
       <br />
       <br />
       <br />
-      <div>Welcome to Start~</div>
+      <div>
+        <p>Welcome to Start~</p>
+      </div>
       <br />
       <br />
       <br />
