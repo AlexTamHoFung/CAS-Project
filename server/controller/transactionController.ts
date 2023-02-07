@@ -23,11 +23,12 @@ export class TransactionsController {
 		}
 	}
     createTransaction = async (req: Request, res: Response) => {
-		const { amount, payment_method, collect_point, is_refund, store_user_id, uuid } = req.body;
-		const transaction_date = new Date().toString()
+		const { amount, payment_method, collect_point, is_refund, store_user_id, uuid, customer_id } = req.body;
+		// const transaction_date = new Date().toISOString()
+		const transaction_date = (new Date()).toISOString().replace("T", " ")
 
 		const transaction = await this.transactionsService.createTransaction
-            (transaction_date, amount, payment_method, collect_point, is_refund, store_user_id, uuid)
+            (transaction_date, amount, payment_method, collect_point, is_refund, store_user_id, uuid, customer_id)
 		if (transaction.length > 0) {
 			res.json({ message: "create transaction success" });
 		} else {

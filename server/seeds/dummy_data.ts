@@ -273,12 +273,12 @@ await knex("points").insert([
         transaction_date: "2023-02-02",
         customer_id: 2
     },
-    {   amount: 2000,
+    {   amount: -2000,
         point_type: "redeem",
         transaction_date: "2023-02-02",
         customer_id: 1
     },
-    {   amount: 3000,
+    {   amount: -3000,
         point_type: "redeem",
         transaction_date: "2023-02-02",
         customer_id: 2

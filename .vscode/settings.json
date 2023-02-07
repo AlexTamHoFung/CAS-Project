@@ -3,12 +3,12 @@
         {
             "previewLimit": 50,
             "server": "35.240.209.79",
-            "port": 5432,
+            "port": 5430,
             "driver": "PostgreSQL",
-            "name": "app",
-            "database": "app",
-            "username": "app",
-            "password": "kalamhui911"
+            "name": "use",
+            "database": "use",
+            "username": "use",
+            "password": "2Ks4YUucwf7gCZCchYM9"
         }
     ]
 }

@@ -34,15 +34,30 @@ const { REACT_APP_API_BASE } = process.env;
 
 
 const ScanQR = () => {
-  const [collect, setCollect] = useState(false);
+  // const [collect, setCollect] = useState();
   const [amount, setAmount] = useState("");
 
 
 
   useEffect (() => {
-
-    
-    
+    let isMounted = true;
+    const fetchData = async () => {
+      const resp = await fetch(`${REACT_APP_API_BASE}/transactions/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({  }),
+      });
+      const data = await resp.json();
+      if (isMounted) {
+        setAmount(data.data.amount);
+      }
+    };
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
   })
 
 
@@ -59,6 +74,7 @@ const ScanQR = () => {
 
   return (
     <div className="scanner">
+
       <ShopHeader />
       <br />
       <br />
@@ -71,14 +87,32 @@ const ScanQR = () => {
       <label>
         輸入結算金額:
       </label>
-        <input type="text" name="name"></input>
-      <label>
-        collect points:
-      </label>
-        <input type="checkbox" checked={collect}></input>
-     
-        <button type="submit" >submit</button>
+        <input 
+          type="text" 
+          name="amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        ></input>
 
+
+      <label>
+        需要儲分:
+      </label>
+        <input type="checkbox" ></input>
+     
+
+      <label >
+        支付方式:
+      </label>
+        <select id="payment">
+          <option value="cash">現金</option>
+          <option value="credit-card">信用卡</option>
+          <option value="octopus">八達通</option>
+        </select>
+
+
+
+        <button type="submit" >submit</button>
       </form>
 
 
