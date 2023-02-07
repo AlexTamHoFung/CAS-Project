@@ -32,7 +32,7 @@ const Record = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bear ${payload}`
+          "Authorization": `Bear ${token}`
         },
         body: JSON.stringify({ uuid: payload.uuid }),
       });
