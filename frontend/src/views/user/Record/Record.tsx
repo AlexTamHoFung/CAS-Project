@@ -32,22 +32,21 @@ const Record = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bear ${payload}`
         },
         body: JSON.stringify({ uuid: payload.uuid }),
       });
       const data = await resp.json();
       console.log("data", data.data);
 
-      // if (isMounted) {
+      if (isMounted) {
         setTransactions(data.data)
-      // }
+      }
     };
     fetchData();
-    // return () => {
-    //   isMounted = false;
-    // };
-  
-  
+    return () => {
+      isMounted = false;
+    };
   },[]
 
   )
@@ -79,7 +78,7 @@ const Record = () => {
           </Card>
         ))}
       </Container>
-      <br />
+        <br />
         <br />
         <br />
         <br />
