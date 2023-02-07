@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { loginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate,  } from "react-router-dom";
 import "./Login.css";
 
 export function Login() {
@@ -51,6 +51,15 @@ export function Login() {
           <br/>
 
           <input type="submit" value="submit"></input>
+          <br/>
+          <a href="/register" className="" style={{color:"white"}}>Register</a>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <a href="/shop-login" className="" style={{color:"white"}}>轉換至專業用戶</a>
         </span>
       </form>
     </div>

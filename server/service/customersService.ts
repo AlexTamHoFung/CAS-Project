@@ -6,13 +6,13 @@ import { Customer } from "./model";
 export class CustomersService {
 	constructor(private dbClient: Knex) {}
 
-	async getCustomerByPhone(phone: number) {
-		const getCustomer = await this.dbClient("customers")
-			.select(phone)
-			.where({ phone: phone });
+	// async getCustomerByPhone(phone: number) {
+	// 	const getCustomer = await this.dbClient("customers")
+	// 		.select(phone)
+	// 		.where({ phone: phone });
 
-		return getCustomer;
-	}
+	// 	return getCustomer;
+	// }
 
 	async getCustomerIdByUUID(uuid: string) {
 		const getCustomerId = await this.dbClient("customers")
@@ -31,6 +31,7 @@ export class CustomersService {
 	) {
 		const customer = await this.dbClient("customers")
 			.where("email", "=", email)
+			.where("phone", "=", phone)
 			.first(["id", "uuid", "name", "email", "password", "phone"]);
 		if (!customer) {
 			password = await hashPassword(password);
