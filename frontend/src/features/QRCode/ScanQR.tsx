@@ -82,7 +82,6 @@ const ScanQR = () => {
       <br />
       <br />
 
-      <p>ACC ID: {result}</p>
       <form onSubmit={handleSubmit}>
       <label>
         輸入結算金額:
@@ -92,7 +91,7 @@ const ScanQR = () => {
           name="amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-        ></input>
+          ></input>
 
 
       <label>
@@ -111,6 +110,7 @@ const ScanQR = () => {
         </select>
 
 
+          <p>ACC ID: {result}</p>
 
         <button type="submit" >submit</button>
       </form>

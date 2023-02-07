@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { ApplicationError } from "../utils/error";
-import {  hashPassword } from "../utils/hash";
+import { hashPassword } from "../utils/hash";
 import { Stores } from "./model";
 
 export class StoresService {
@@ -24,18 +24,33 @@ export class StoresService {
 
 	async createStore(
 		name: string,
-        username: string,
-        password: string,
-        location: string,
-        size: string,
-        company_id: number
+		username: string,
+		password: string,
+		location: string,
+		size: string,
+		company_id: number
 	) {
 		const store = await this.dbClient("store_users")
 			.where("username", "=", username)
-			.first(["id", "name", "username", "password","location","size","company_id"]);
+			.first([
+				"id",
+				"name",
+				"username",
+				"password",
+				"location",
+				"size",
+				"company_id"
+			]);
 		if (!store) {
 			password = await hashPassword(password);
-			const insertData = { name, username, password, location, size, company_id };
+			const insertData = {
+				name,
+				username,
+				password,
+				location,
+				size,
+				company_id
+			};
 			const result = await this.dbClient("store_users")
 				.insert(insertData)
 				.returning("id");
@@ -44,15 +59,10 @@ export class StoresService {
 		throw new ApplicationError("Duplicated Store", 400);
 	}
 
-	async checkStore(username: string ) {
-		const store = await this.dbClient.select("*")
-		.from<Stores>("store_users")
+	async checkStore(username: string) {
+		const store = await this.dbClient<Stores>("store_users")
 			.where({ username: username })
 			.first(["id", "username", "password"]);
-			return store;
-		// if (customer && (await checkPassword(password, customer.password))) {
-		// }
-		// throw new InvalidInfoError();
+		return store;
 	}
-
 }

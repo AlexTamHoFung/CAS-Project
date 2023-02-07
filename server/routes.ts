@@ -61,7 +61,10 @@ import { transactionsRoutes } from "./router/transactionsRoutes";
 import { coupontransactionsRoutes } from "./router/coupontransactionsRoutes";
 import { couponsRoutes } from "./router/couponsRoutes";
 
+import { isStoreLoggedIn } from "./utils/guard";
+
 export const routes = express.Router();
+
 routes.use("/customers", customersRoutes);
 routes.use("/companies", companiesRoutes);
 routes.use("/stores", storesRoutes);
@@ -70,6 +73,6 @@ routes.use("/admins", adminsRoutes);
 routes.use("/promotions", promotionsRoutes);
 routes.use("/listings", listingsRoutes);
 routes.use("/points", pointsRoutes);
-routes.use("/transactions", transactionsRoutes);
+routes.use("/transactions", isStoreLoggedIn, transactionsRoutes);
 routes.use("/coupon_transactions", coupontransactionsRoutes);
 routes.use("/coupons", couponsRoutes);

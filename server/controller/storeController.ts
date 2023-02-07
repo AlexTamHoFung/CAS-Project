@@ -22,14 +22,18 @@ export class StoresController {
 		} catch (error) {
 			logger.error(error.message);
 			res.status(500).json({ message: "internal server error" });
-			
 		}
 	};
 
 	register = async (req: Request, res: Response) => {
 		const { name, username, password, location, size, company_id } = req.body;
 		const store = await this.storesService.createStore(
-            name, username, password, location, size, company_id
+			name,
+			username,
+			password,
+			location,
+			size,
+			company_id
 		);
 
 		if (store.length > 0) {
@@ -47,11 +51,7 @@ export class StoresController {
 				return;
 			}
 
-			const store = await this.storesService.checkStore(
-				username
-				// password,
-			);
-
+			const store = await this.storesService.checkStore(username);
 			if (!store) {
 				res.status(400).json({ message: "no such user" });
 				return;
@@ -63,12 +63,8 @@ export class StoresController {
 				}
 
 				// start generating jwt
-				const payload = {
-					uuid: store.id,
-					username: store.username
-				};
+				const payload = { id: store.id, username: store.username };
 				const shopToken = jwtSimple.encode(payload, jwt.jwtSecret);
-
 				res.json({ message: "login success", data: shopToken });
 			}
 		} catch (error) {

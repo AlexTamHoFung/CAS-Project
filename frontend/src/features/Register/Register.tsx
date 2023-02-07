@@ -14,7 +14,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: { name: "", email: "", password: "", phone: "" },
@@ -26,9 +25,16 @@ const Register = () => {
   register("email", { required: true });
   register("password", { required: true, minLength: 6 });
   register("phone", { required: true, minLength: 8, maxLength: 8 });
+                      
 
-  useEffect(() => {
-    let sub = watch(async (data) => {
+  const submitHandler = async (data: FormValues) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("password", data.password);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+
+    // async (data) => {
       console.log("formdata: ", data);
       const { REACT_APP_API_BASE } = process.env;
       const jsonData = {
@@ -46,16 +52,7 @@ const Register = () => {
       });
       const respData = await resp.json();
       console.log("respData: ", respData);
-    });
-    return () => sub.unsubscribe();
-  }, [watch]);
-
-  const submitHandler = async (data: FormValues) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("password", data.password);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
+    // }
   };
 
   return (
