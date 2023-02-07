@@ -7,7 +7,7 @@ import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
 
 import Home from "./views/user/Home/Home";
-import Profile from "./views/user/Profile/Profile";
+// import Profile from "./views/user/Profile/Profile";
 import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
@@ -34,7 +34,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<PrivateRoute/>}>             
               <Route element={<Home />} index />
-              <Route path="profile" element={<Profile />} />
+              {/* <Route path="profile" element={<Profile />} /> */}
               <Route path="record" element={<Record />} />
               <Route path="redeem" element={<Redeem />} />
               <Route path="displayQR" element={<DisplayQR />} />

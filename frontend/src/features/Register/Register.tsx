@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./Register.css";
-// import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
   name: string;
@@ -10,7 +10,10 @@ type FormValues = {
   phone: string;
 };
 
+
+
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -19,7 +22,7 @@ const Register = () => {
     defaultValues: { name: "", email: "", password: "", phone: "" },
   });
 
-  // const navigate = useNavigate();
+
 
   register("name", { required: { value: true, message: "this is required" } });
   register("email", { required: true });
@@ -49,9 +52,13 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(jsonData),
+        
+  
       });
       const respData = await resp.json();
       console.log("respData: ", respData);
+      navigate('/')
+
     // }
   };
 
@@ -92,7 +99,9 @@ const Register = () => {
             {errors.phone && <p className="error">？</p>}
           </p>
 
-          <input type="submit" value="submit" />
+          <input type="submit" value="submit"/>
+
+          <a href="/login" style={{color:"white"}}>Back</a>
         </span>
       </form>
 

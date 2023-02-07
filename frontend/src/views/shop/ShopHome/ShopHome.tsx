@@ -1,8 +1,10 @@
 import React from "react";
-import ShopHeader from "../../../components/shopHeader/ShopHeader";
+import ShopHeader from "../../../components/shopheader/ShopHeader";
+
 
 
 import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
+// import ShopHeader from "../../../features/Header/ShopHeader";
 
 
 export default function ShopHome() {

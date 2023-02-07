@@ -1,6 +1,5 @@
 import "./ScanQR.css";
 import ShopBottomNav from "../BottomNav/ShopBottomNav";
-<<<<<<< HEAD
 
 import {
   Box,
@@ -16,43 +15,11 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import ShopHeader from "../Header/ShopHeader";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-const ScanQR = () => {
-  const [redeem, setRedeem] = useState("false");
-  const [modalDisplay, setModalDisplay] = useState(false);
-
-=======
-import ShopHeader from "../../components/shopHeader/ShopHeader";
-import {
-  Box,
-  Container,
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Modal,
-  Select,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
 import { OnResultFunction, QrReader } from "react-qr-reader";
 import { SetStateAction, useEffect, useState } from "react";
+import ShopHeader from "../../components/shopheader/ShopHeader";
+
 
 // For scanner
 const MyQrReader: React.FC<{
@@ -92,7 +59,6 @@ const ScanQR = () => {
 
   
   
->>>>>>> fa69df8a50def35a70e355a9a7e36d96e662f820
   useEffect(() => {
     setModalDisplay(redeem === "true");
   }, [redeem]);
@@ -155,13 +121,6 @@ const ScanQR = () => {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-<<<<<<< HEAD
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-=======
               掃描顧客二維碼
             </Typography>
             <MyQrReader
@@ -186,7 +145,6 @@ const ScanQR = () => {
               className={"scan-video"}
             />
             <p>ACC ID: {result}</p>
->>>>>>> fa69df8a50def35a70e355a9a7e36d96e662f820
           </Box>
         </Modal>
       )}
