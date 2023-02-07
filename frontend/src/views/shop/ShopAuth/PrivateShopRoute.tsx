@@ -4,7 +4,7 @@ import { useAppSelector } from "../../../app/hook";
 
 
 export default function PrivateShopRoute() {
-  const isShopAuth = useAppSelector((state) => state.auth.isAuth);
+  const isShopAuth = useAppSelector((state) => state.auth.isShopAuth);
   const location = useLocation();
 
   if (!isShopAuth) {

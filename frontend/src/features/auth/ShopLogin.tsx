@@ -1,8 +1,6 @@
+import "./Login.css";
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
-import "./ShopLogin.css";
 import { shopLoginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
 
@@ -22,41 +20,44 @@ export default function ShopLogin() {
       });
   };
   return (
-    <div id="shop-loginform">
+    <div className="Login__container Login__store">
       <form onSubmit={submitHandler}>
-        <div className="shop-headerTitle">
+        <div className="Login__headerTitle">
           <img src={require("./logo.png")} alt="logo" height={"80rem"} />
           <h3>商戶登入</h3>
         </div>
-
-        <span className="shop-form-row">
-          <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="string"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-          ></input>
-          <label htmlFor="shop-username">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-          ></input>
-
-          <br />
-
-          <input type="submit" value="submit"></input>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <a href="/login" style={{color:"white"}}>轉換至普通用戶</a>
-        </span>
+        <div className="Login__formContent">
+          <div className="Login__formRow">
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+            ></input>
+          </div>
+          <div className="Login__formRow">
+            <label htmlFor="shop-username">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+            ></input>
+          </div>
+          <div className="Login__formRow">
+            <input
+              type="submit"
+              value="submit"
+              className="Login__storeSubmit"
+            ></input>
+          </div>
+          <a href="/login" style={{ color: "white" }}>
+            轉換至普通用戶
+          </a>
+        </div>
       </form>
     </div>
   );

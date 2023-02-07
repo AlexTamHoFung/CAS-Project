@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
-import UserHeader from "../../../components/userheader/UserHeader";
+import UserHeader from "../../../components/userHeader/UserHeader";
 
 
 interface Coupon {

@@ -1,11 +1,25 @@
-import React, { SetStateAction, useEffect, useState } from "react";
-import { OnResultFunction, QrReader } from "react-qr-reader";
-import ShopHeader from "../../components/shopheader/ShopHeader";
-import ShopBottomNav from "../BottomNav/ShopBottomNav";
 import "./ScanQR.css";
+import ShopBottomNav from "../BottomNav/ShopBottomNav";
+import ShopHeader from "../../components/shopHeader/ShopHeader";
+import {
+  Box,
+  Container,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+  TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
+import { OnResultFunction, QrReader } from "react-qr-reader";
+import { SetStateAction, useEffect, useState } from "react";
 
+// For scanner
 const MyQrReader: React.FC<{
-  // onScan: (data: string) => void;
   onError: (err: any) => void;
   onLoad?: () => void;
   onImageLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
@@ -20,132 +34,118 @@ const MyQrReader: React.FC<{
   onResult?: OnResultFunction;
 }> = QrReader as any;
 
-interface TransPT {
-    amount: number,
-    payment_method: string,
-    collect_point: boolean,
-    is_refund: boolean,
-    store_user_id: number,
-    uuid:string
-}
-
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 const { REACT_APP_API_BASE } = process.env;
 
-
 const ScanQR = () => {
-  // const [collect, setCollect] = useState();
-  const [amount, setAmount] = useState("");
-
-
-
-  useEffect (() => {
-    let isMounted = true;
-    const fetchData = async () => {
-      const resp = await fetch(`${REACT_APP_API_BASE}/transactions/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({  }),
-      });
-      const data = await resp.json();
-      if (isMounted) {
-        setAmount(data.data.amount);
-      }
-    };
-    fetchData();
-    return () => {
-      isMounted = false;
-    };
-  })
-
-
+  const [redeem, setRedeem] = useState("false");
+  const [modalDisplay, setModalDisplay] = useState(false);
   const [result, setResult] = useState("");
   const [error, setError] = useState(null);
 
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
-  function handleSubmit(e:  React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
   
-  }
+  
+  useEffect(() => {
+    setModalDisplay(redeem === "true");
+  }, [redeem]);
+
+  console.log(redeem);
 
   return (
-    <div className="scanner">
-
+    <Container fixed>
       <ShopHeader />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <form onSubmit={handleSubmit}>
-      <label>
-        輸入結算金額:
-      </label>
-        <input 
-          type="text" 
-          name="amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          ></input>
-
-
-      <label>
-        需要儲分:
-      </label>
-        <input type="checkbox" ></input>
-     
-
-      <label >
-        支付方式:
-      </label>
-        <select id="payment">
-          <option value="cash">現金</option>
-          <option value="credit-card">信用卡</option>
-          <option value="octopus">八達通</option>
-        </select>
-
-
-          <p>ACC ID: {result}</p>
-
-        <button type="submit" >submit</button>
-      </form>
-
-
-
-      <MyQrReader
-        delay={300}
-        onError={(error: { message: SetStateAction<null> }) => {
-          setError(error.message);
+      <Box
+        component="form"
+        sx={{
+          marginTop: 10,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
-        onResult={(data) => {
-          if (data) {
-            setResult(data.getText());
-            // setError(null);
-            console.log(data.getText());
-          }
-        }}
-        videoStyle={{
-          width: "60%",
-          height: "60%",
-          screenLeft: "20%",
-          marginLeft: 225,
-          marginRight: 225,
-        }}
-        className={"scan-video"}
-      />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      >
+        <FormControl style={{ marginTop: 15, marginBottom: 15 }} fullWidth>
+          <TextField required id="outlined-required" label="結算金額" />
+          <FormHelperText id="my-helper-text">請輸入結算金額</FormHelperText>
+        </FormControl>
+        <FormControl style={{ marginTop: 15, marginBottom: 15 }} fullWidth>
+          <InputLabel>支付方式</InputLabel>
+          <Select
+            // value={age}
+            label="Age"
+            // onChange={handleChange}
+          >
+            <MenuItem value="cash">現金</MenuItem>
+            <MenuItem value="credit-card">信用卡</MenuItem>
+            <MenuItem value="octopus">八達通</MenuItem>
+          </Select>
+          <FormHelperText id="my-helper-text">請輸入支付方式</FormHelperText>
+        </FormControl>
+        <div style={{ marginTop: 40 }}>
+          <InputLabel>需要儲分</InputLabel>
+        </div>
+        <FormControl style={{ marginBottom: 15 }} fullWidth>
+          <ToggleButtonGroup
+            color="primary"
+            value={redeem}
+            exclusive
+            onChange={(_e, value) => setRedeem(value)}
+            aria-label="Platform"
+            sx={{ padding: "15px 0" }}
+          >
+            <ToggleButton value="true">需要儲分</ToggleButton>
+            <ToggleButton value="false">不需要儲分</ToggleButton>
+          </ToggleButtonGroup>
+        </FormControl>
+      </Box>
       <ShopBottomNav />
-    </div>
+      {modalDisplay && (
+        <Modal
+          open={modalDisplay}
+          onClose={() => setModalDisplay(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              掃描顧客二維碼
+            </Typography>
+            <MyQrReader
+              delay={300}
+              onError={(error: { message: SetStateAction<null> }) => {
+                setError(error.message);
+              }}
+              onResult={(data) => {
+                if (data) {
+                  setResult(data.getText());
+                  // setError(null);
+                  console.log(data.getText());
+                }
+              }}
+              videoStyle={{
+                width: "60%",
+                height: "60%",
+                screenLeft: "20%",
+                marginLeft: 225,
+                marginRight: 225,
+              }}
+              className={"scan-video"}
+            />
+            <p>ACC ID: {result}</p>
+          </Box>
+        </Modal>
+      )}
+    </Container>
   );
 };
 

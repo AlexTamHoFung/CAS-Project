@@ -153,7 +153,7 @@ export const authSlice = createSlice({
         let decoded: JWTPayload = jwt_decode(action.payload);
         console.log("check decoded", decoded);
         state.username = decoded.username;
-        state.isAuth = true;
+        state.isShopAuth = true;
 
         localStorage.setItem("shopToken", action.payload);
       })
@@ -205,5 +205,7 @@ export const { shopLogin } = authSlice.actions;
 export const { login } = authSlice.actions;
 
 export const { logout } = authSlice.actions;
+
+export const { shopLogout } = authSlice.actions;
 
 export default authSlice.reducer;

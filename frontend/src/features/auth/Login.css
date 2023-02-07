@@ -1,30 +1,84 @@
-#loginform{
-  max-width: 300px;
-  min-width: 300px;
-  max-height: 600px;
-  min-height: 600px;
-
+.Login__container {
+  max-width: 80%;
+  min-width: 50%;
+  min-height: 650px;
   padding-top: 10px;
-
   margin: 100px auto;
-  background-color: #559FB7;
   border-radius: 25px;
   color: white;
 }
 
-.headerTitle {
+.Login__container.Login__store {
+  background-color: #FF6B00;
+}
+
+.Login__container.Login__customer {
+  background-color: #559FB7;
+}
+
+.Login__headerTitle {
   text-align: center;
   font-family: 'open sans', sans-serif;
   padding: 2rem 0;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
-.form-row {
+.Login__formContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
   max-width: 100%;
+}
 
+.Login__formRow {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+  width: 80%;
+}
+
+.Login__formRow div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.Login__formRow input[type=text], input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.Login__formRow input[type=submit] {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.Login__customerSubmit {
+  background-color: #515151
+}
+
+.Login__storeSubmit {
+  background-color: #2e2f77;
+}
+
+
+.Login__formContent a {
+  margin: 10px 0;
+  font-size: large;
+  font-weight: 300;
 }
