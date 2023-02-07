@@ -47,18 +47,25 @@ export default function Redeem() {
       <br />
       <Container fixed>
         {couponList.map((coupon) => (
-          <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
+          <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25}}>
+            <button
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                float: "right",
+                marginTop: "30px",
+                marginRight: "5%",
+                width: "120px",
+                height: "30px",
+                borderRadius: "6px"
+              }}
+            >
+              Redeem
+            </button>{" "}
             <CardHeader
               title={coupon.name.toUpperCase()}
               subheader={`Reuired Points: ${coupon.points_required}`}
             />
-            <button
-              style={{  color: "black" }}
-            >
-              Redeem
-            </button>
-
-
             <CardMedia
               component="img"
               height="200"

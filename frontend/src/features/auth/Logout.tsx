@@ -18,7 +18,7 @@ export default function Logout() {
     return (
       <div className="logout-bar">
         {isAuthenticated ? (
-          <Button style={{color:"white", backgroundColor:"red"}}  onClick={clickLogout}>
+          <Button style={{color:"white", backgroundColor:"orange"}}  onClick={clickLogout}>
             Logout
           </Button>
         ) : (

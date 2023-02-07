@@ -8,9 +8,6 @@ import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userHeader/UserHeader";
 
-
-
-
 interface Coupon {
   id: number;
   name: string;
@@ -30,30 +27,37 @@ export default function Redeem() {
     fetch(`${REACT_APP_API_BASE}/listings/getListing`)
       .then((resp) => resp.json())
       .then((data) => setCouponList(data));
-
   }, [couponList]);
   return (
     <div>
       <UserHeader />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       <Container fixed>
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
-            <CardHeader
-              title={coupon.name.toUpperCase()}
-              subheader={`Reuired Points: ${coupon.points_required}`}
-            />
             <button
-              style={{  color: "black" }}
+              style={{
+                backgroundColor: "yellow",
+                color: "grey",
+                float: "right",
+                marginTop: "30px",
+                marginRight: "5%",
+                width: "120px",
+                height: "30px",
+              }}
             >
               Redeem
             </button>
 
+            <CardHeader
+              title={coupon.name.toUpperCase()}
+              subheader={`Reuired Points: ${coupon.points_required}`}
+            />
 
             <CardMedia
               component="img"
