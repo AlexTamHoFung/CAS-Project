@@ -43,10 +43,11 @@ export default function Redeem() {
       <br />
       <br />
       <br />
-      <br />
-      <br />
+
       <Container fixed>
+      <h2 style={{textAlign: "center"}}>換領優惠卷</h2>
         {couponList.map((coupon) => (
+          
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25}}>
             <button
               style={{

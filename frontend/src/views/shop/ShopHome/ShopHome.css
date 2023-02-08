@@ -1,0 +1,12 @@
+.ShopHome__container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.ShopHome__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

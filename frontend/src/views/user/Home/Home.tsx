@@ -57,7 +57,7 @@ export default function Redeem() {
               Redeem
             </button>{" "}
 
-            <CardHeader
+            <CardHeader 
               title={coupon.name.toUpperCase()}
               subheader={`Reuired Points: ${coupon.points_required}`}
             />

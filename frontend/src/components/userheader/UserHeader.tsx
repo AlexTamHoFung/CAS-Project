@@ -83,8 +83,10 @@ function ResponsiveAppBar() {
           >
 
           </Typography>
-          <Box>你的積分 : {points}</Box>
+
           <Avatar alt="" src={logo} sx={{ width: 80, height: 56 }} variant="square"/>
+
+          <Box>你的積分 : {points}</Box>
           </Container>
 
         <Logout />
