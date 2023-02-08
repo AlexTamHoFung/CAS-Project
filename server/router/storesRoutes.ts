@@ -1,6 +1,5 @@
 import express from "express";
 import { storesController } from "../routes";
-// import { isLoggedInAPI } from "../utils/guard";
 import { asyncWrapper } from "../utils/wrapper";
 
 export const storesRoutes = express.Router();

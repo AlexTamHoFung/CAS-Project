@@ -7,6 +7,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userHeader/UserHeader";
+import moment from "moment";
+
+
 
 interface Coupon {
   id: number;
@@ -54,12 +57,12 @@ export default function Redeem() {
                 borderRadius: "6px"
               }}
             >
-              Redeem
+              換領
             </button>{" "}
 
             <CardHeader 
               title={coupon.name.toUpperCase()}
-              subheader={`Reuired Points: ${coupon.points_required}`}
+              subheader={`所需DOL分 : ${coupon.points_required}`}
             />
 
             <CardMedia
@@ -69,7 +72,7 @@ export default function Redeem() {
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                Date: {coupon.valid_start} - {coupon.valid_end}
+                換領限期: {moment(coupon.valid_start).format('L')} - {moment(coupon.valid_end).format('L')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {coupon.description}

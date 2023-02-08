@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import UserHeader from "../../../components/userHeader/UserHeader";
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import jwt_decode from "jwt-decode";
+import moment from "moment";
 
 interface JWTPayload {
   email: string;
@@ -32,7 +33,7 @@ const Record = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bear ${token}`
+          "Authorization": `Bear ${token}`,
         },
         body: JSON.stringify({ uuid: payload.uuid }),
       });
@@ -65,11 +66,11 @@ const Record = () => {
           <Card key={index} style={{ marginBottom: 25 }}>
             <CardHeader
               title={trans.name.toUpperCase()}
-              subheader={`Collected Points: ${trans.amount}`}
+              subheader={`賺取DOL分: ${trans.amount}`}
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                Date: {trans.transaction_date}
+                交易日期: {moment(trans.transaction_date).format('LLL')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {trans.payment_method}

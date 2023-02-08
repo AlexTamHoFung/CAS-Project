@@ -24,10 +24,9 @@ export class PointsController {
 	}
     addPoint = async (req: Request, res: Response) => {
 		const point_type = "Earn"
-		const transaction_date = new Date().toString()
 		const { amount, uuid } = req.body;
 		const point = await this.pointsService.addPoint(
-            amount, point_type, transaction_date, uuid, 
+            amount, point_type,  uuid
 		);
 
 		if (point) {

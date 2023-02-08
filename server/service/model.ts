@@ -84,6 +84,7 @@ export interface Points {
 	amount: number;
 	point_type: string;
 	transaction_date: string;
+	uuid: string,
 	customer_id: number;
 }
 
