@@ -11,32 +11,12 @@ import cors from "cors";
 export const knex = Knex(config[process.env.NODE_ENV ?? "development"]);
 
 const app = express();
-app.use(cors());
+app.use(cors({credentials: true}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// import { AuthController } from "./controllers/AuthController";
-// import { AuthService } from "./services/AuthService";
-// import { TodoService } from "./services/TodoService";
-// import { TodoController } from "./controllers/TodoController";
-
-// export const authService = new AuthService(knex);
-// export const authController = new AuthController(authService);
-// const todoService = new TodoService(knex);
-// export const todoController = new TodoController(todoService);
-
-// import { authRoutes } from "./router/authRoutes";
-// import { todoRoutes } from "./router/todoRoutes";
-
-// app.use("/auth", authRoutes);
-// app.use("/todo", todoRoutes);
-
-app.get("/", (_req, res) => {
-	res.send("Hi");
-});
-
 app.use((req, _res, next) => {
-	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
+	logger.info(`Path: ${req.path},,, Method: ${req.method}`);
 	next();
 });
 
