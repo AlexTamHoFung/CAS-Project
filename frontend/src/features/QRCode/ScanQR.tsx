@@ -1,6 +1,9 @@
 import "./ScanQR.css";
 import ShopBottomNav from "../BottomNav/ShopBottomNav";
-import ShopHeader from "../../components/shopHeader/ShopHeader";
+import { useEffect, useState } from "react";
+import QRModal from "./QRModal";
+
+
 import {
   Box,
   Container,
@@ -13,8 +16,8 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import QRModal from "./QRModal";
+import ShopHeader from "../../components/shopHeader/ShopHeader";
+
 
 const { REACT_APP_API_BASE } = process.env;
 

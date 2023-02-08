@@ -21,7 +21,7 @@ const Register = () => {
   } = useForm<FormValues>({
     defaultValues: { name: "", email: "", password: "", phone: "" },
   });
-
+  const navigate = useNavigate();
 
   register("name", { required: { value: true, message: "this is required" } });
   register("email", { required: true });

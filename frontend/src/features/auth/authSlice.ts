@@ -74,6 +74,7 @@ export const shopLoginThunk = createAsyncThunk<
   { rejectValue: string }
 >("@stores/login", async ({ username, password }, thunkAPI) => {
   try {
+    console.log('shopLoginThunk: ', username, '|', password)
     const res = await fetch(`${REACT_APP_API_BASE}/stores/login`, {
       method: "POST",
       headers: {
@@ -86,6 +87,7 @@ export const shopLoginThunk = createAsyncThunk<
     });
 
     const JWT_shopToken = await res.json();
+    console.log('shopLoginThunk, JWT: ', JWT_shopToken)
     return JWT_shopToken.data;
   } catch (error) {
     return thunkAPI.rejectWithValue("AUTH Login failed");
@@ -107,7 +109,7 @@ export const authSlice = createSlice({
       localStorage.setItem("auth", JSON.stringify(state));
     },
     shopLogin: (state, action: PayloadAction<string>) => {
-      state.isAuth = true;
+      state.isShopAuth = true;
       state.username = action.payload;
       console.log("check action payload", action.payload);
       localStorage.setItem("auth", JSON.stringify(state));
@@ -143,7 +145,7 @@ export const authSlice = createSlice({
         state.error = action.payload;
       });
 
-    builder  
+    builder
       .addCase(shopLoginThunk.pending, (state) => {
         state.loading = true;
       })

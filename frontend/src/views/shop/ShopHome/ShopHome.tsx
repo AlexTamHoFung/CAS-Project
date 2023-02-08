@@ -3,8 +3,8 @@ import ShopHeader from "../../../components/shopHeader/ShopHeader";
 
 
 
+
 import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
-// import ShopHeader from "../../../features/Header/ShopHeader";
 
 
 export default function ShopHome() {

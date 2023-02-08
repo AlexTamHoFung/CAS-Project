@@ -20,6 +20,7 @@ interface Coupon {
 }
 const { REACT_APP_API_BASE } = process.env;
 export default function Redeem() {
+
   const [couponList, setCouponList] = useState<Coupon[]>([]);
 
   // fetch here and update couponList
@@ -28,6 +29,7 @@ export default function Redeem() {
       .then((resp) => resp.json())
       .then((data) => setCouponList(data));
   }, [couponList]);
+  
   return (
     <div>
       <UserHeader />
@@ -42,17 +44,18 @@ export default function Redeem() {
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
             <button
               style={{
-                backgroundColor: "yellow",
-                color: "grey",
+                backgroundColor: "red",
+                color: "white",
                 float: "right",
                 marginTop: "30px",
                 marginRight: "5%",
                 width: "120px",
                 height: "30px",
+                borderRadius: "6px"
               }}
             >
               Redeem
-            </button>
+            </button>{" "}
 
             <CardHeader
               title={coupon.name.toUpperCase()}
