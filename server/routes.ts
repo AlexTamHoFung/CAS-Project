@@ -43,7 +43,7 @@ export const pointsService = new PointsService(knex);
 export const pointsController = new PointsController(pointsService);
 
 export const transactionsService = new TransactionsService(knex);
-export const transactionsController = new TransactionsController(transactionsService);
+export const transactionsController = new TransactionsController(transactionsService, pointsService);
 export const coupontransactionsService = new CoupontransactionsService(knex);
 export const coupontransactionsController = new CoupontransactionsController(coupontransactionsService);
 export const couponsService = new CouponsService(knex);

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { Modal, Typography } from "@mui/material";
 import { SetStateAction, useEffect, useState } from "react";
 import { QrReader, OnResultFunction } from "react-qr-reader";
-
+import  "./QRModal.css"
 // For scanner
 const MyQrReader: React.FC<{
   onError: (err: any) => void;
@@ -72,11 +72,11 @@ const QRModal = ({ closeHandler, setResult }: QRModalProps) => {
               }
             }}
             videoStyle={{
-              width: "60%",
-              height: "60%",
+              width: "100%",
+              height: "100%",
               screenLeft: "20%",
-              marginLeft: 225,
-              marginRight: 225,
+              marginLeft: 0,
+              marginRight: 0,
             }}
             className={"scan-video"}
           />
