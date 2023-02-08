@@ -42,7 +42,7 @@ export default function Redeem() {
       <Container fixed>
         {couponList.map((coupon) => (
           <Card key={`coupon_${coupon.id}`} style={{ marginBottom: 25 }}>
-            <button
+            <button onClick={() =>{console.log('redeem')}}
               style={{
                 backgroundColor: "red",
                 color: "white",
