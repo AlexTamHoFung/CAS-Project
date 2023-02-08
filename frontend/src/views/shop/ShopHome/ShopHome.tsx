@@ -1,29 +1,19 @@
-import React from "react";
+import "./ShopHome.css"
 import ShopHeader from "../../../components/shopHeader/ShopHeader";
-
-
-
 import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
-// import ShopHeader from "../../../features/Header/ShopHeader";
-
 
 export default function ShopHome() {
   return (
-    <div>
+    <div className="ShopHome__container">
       <ShopHeader />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div>
-        <p>Welcome to Start~</p>
+      <div className="ShopHome__content">
+        <img
+          src={require("./001.jpg")}
+          alt="welcome-page-logo"
+          style={{ backgroundColor: "white", width: "80%" }}
+        />
+        <h1 style={{ color: "orange" }}>Welcome to Start!</h1>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <ShopBottomNav />
     </div>
   );

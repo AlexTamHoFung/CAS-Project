@@ -1,6 +1,6 @@
 import "./ScanQR.css";
 import ShopBottomNav from "../BottomNav/ShopBottomNav";
-import ShopHeader from "../../components/shopHeader/ShopHeader";
+
 import {
   Box,
   Button,
@@ -19,6 +19,7 @@ import QRModal from "./QRModal";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
+import ShopHeader from "../../components/shopHeader/ShopHeader";
 
 
 interface TransPT {

@@ -58,10 +58,10 @@ const Record = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
+
 
       <Container fixed>
+        <h2 style={{textAlign: "center"}}>交易紀錄</h2>
         {transactions.map((trans, index) => (
           <Card key={index} style={{ marginBottom: 25 }}>
             <CardHeader
