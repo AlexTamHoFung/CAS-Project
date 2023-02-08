@@ -4,8 +4,10 @@ import jwt_decode from "jwt-decode";
 import "./DisplayQR.css"
 import BottomNav from "../../../features/BottomNav/BottomNav";
 import UserHeader from "../../../components/userHeader/UserHeader";
-
+import logo from "./logo.png"
 import "./DisplayQR.css"
+import { Box } from "@mui/material";
+import { width } from "@mui/system";
 
 
 
@@ -25,35 +27,37 @@ export const DisplayQR = () => {
       <br />
       <br />
       <br />
-      <br />
       <div className="welcomemsgs" >
         <br />
         <br />
         <br />
         <h1>歡迎你!</h1>        
         <div>
-          出示dolphin ID二維碼及賺取積分
+          出示 DOLPHIN ID二維碼及賺取積分
         </div>
         <br/>
-      </div>
+      </div >
+      <Box >
       <QRCodeCanvas
         value={payload.uuid}
         size={225}
-        bgColor={"#ffffff"}
-        fgColor={"black"}
+        bgColor={"pink"}
+        fgColor={"darkred"}
         level={"H"}
         includeMargin={true}
         imageSettings={{
-          src: "",
+
+          src: `${logo}`,
           x: undefined,
           y: undefined,
-          height: 24,
-          width: 24,
+          height: 50,
+          width: 70,
           excavate: true,
         }}
       />
+      </Box>
 
-      <h1>Your User ID</h1>
+      <h1>你的專屬會員號碼</h1>
       <p>{payload.uuid}</p>
       <br />
       <br />

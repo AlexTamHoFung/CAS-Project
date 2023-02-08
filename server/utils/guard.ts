@@ -38,6 +38,7 @@ export async function isStoreLoggedIn(
 	try {
 		const token = permit.check(req);
 		if (!token) {
+			console.log("asd");
 			return res.status(401).json({ msg: "Permission Denied" });
 		}
 
@@ -51,6 +52,7 @@ export async function isStoreLoggedIn(
 			return res.status(401).json({ msg: "Permission Denied" });
 		}
 	} catch (error) {
+		console.error(error.message)
 		return res.status(401).json({ msg: "Permission Denied" });
 	}
 }

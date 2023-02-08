@@ -1,12 +1,10 @@
 import { Box } from "@mui/material";
 import { Modal, Typography } from "@mui/material";
-import { createRef, SetStateAction, useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import { SetStateAction, useEffect, useState } from "react";
 import { QrReader, OnResultFunction } from "react-qr-reader";
 
 // For scanner
 const MyQrReader: React.FC<{
-  forwardedRef?: any;
   onError: (err: any) => void;
   onLoad?: () => void;
   onImageLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
@@ -33,14 +31,23 @@ const style = {
   p: 4,
 };
 
-const QRModal = ({
-  closeHandler,
-  setResult,
-}: {
+interface QRModalProps {
   closeHandler: () => void;
   setResult: (data: string) => void;
-}) => {
+}
+
+const QRModal = ({ closeHandler, setResult }: QRModalProps) => {
+  const [display, setDisplay] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("display true")
+    setDisplay(true);
+    return () => {
+        console.log("display false")
+        setDisplay(false)
+    };
+  }, []);
 
   return (
     <Modal
@@ -53,25 +60,27 @@ const QRModal = ({
         <Typography id="modal-modal-title" variant="h6" component="h2">
           掃描顧客二維碼
         </Typography>
-        <MyQrReader
-          delay={300}
-          onError={(error: { message: SetStateAction<null> }) => {
-            setError(error.message);
-          }}
-          onResult={(data) => {
-            if (data) {
-              setResult(data.getText());
-            }
-          }}
-          videoStyle={{
-            width: "60%",
-            height: "60%",
-            screenLeft: "20%",
-            marginLeft: 225,
-            marginRight: 225,
-          }}
-          className={"scan-video"}
-        />
+        {display && (
+          <MyQrReader
+            delay={300}
+            onError={(error: { message: SetStateAction<null> }) => {
+              setError(error.message);
+            }}
+            onResult={(data) => {
+              if (data) {
+                setResult(data.getText());
+              }
+            }}
+            videoStyle={{
+              width: "60%",
+              height: "60%",
+              screenLeft: "20%",
+              marginLeft: 225,
+              marginRight: 225,
+            }}
+            className={"scan-video"}
+          />
+        )}
       </Box>
     </Modal>
   );

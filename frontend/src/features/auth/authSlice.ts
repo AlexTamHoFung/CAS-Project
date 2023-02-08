@@ -107,7 +107,7 @@ export const authSlice = createSlice({
       localStorage.setItem("auth", JSON.stringify(state));
     },
     shopLogin: (state, action: PayloadAction<string>) => {
-      state.isAuth = true;
+      state.isShopAuth = true;
       state.username = action.payload;
       console.log("check action payload", action.payload);
       localStorage.setItem("auth", JSON.stringify(state));

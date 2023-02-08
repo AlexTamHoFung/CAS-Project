@@ -70,28 +70,28 @@ const Register = () => {
             <label>Name</label>
             <br />
             <input type="text" {...register("name", { required: true })} />
-            {errors.name && <p className="error">？</p>}
+            {errors.name && <p className="error">Name is required</p>}
           </p>
 
           <p>
             <label>Password </label>
             <br />
-            <input type="text" {...register("password", { required: true })} />
-            {errors.password && <p className="error">？</p>}
+            <input type="text" {...register("password", { required: true, minLength: 6 })} />
+            {errors.password && <p className="error">Minimun length is 6</p>}
           </p>
 
           <p>
             <label>Email </label>
             <br />
             <input type="text" {...register("email", { required: true })} />
-            {errors.email && <p className="error">？</p>}
+            {errors.email && <p className="error">Email is required</p>}
           </p>
 
           <p>
             <label>PhoneNumber </label>
             <br />
-            <input type="integer" {...register("phone", { required: true })} />
-            {errors.phone && <p className="error">？</p>}
+            <input type="integer" {...register("phone", { required: true, minLength: 8, maxLength: 8  })} />
+            {errors.phone && <p className="error">Not valid phone number</p>}
           </p>
 
           <input type="submit" value="submit"/>
