@@ -24,7 +24,7 @@ export default function Regphone() {
       <div>
         <div>按「下一步」即表示你同意及接受我們的</div>
         <div>
-          <a href="">dolphin條款及細則</a>
+          {/* <a href="">dolphin條款及細則</a> */}
         </div>
       </div>
 

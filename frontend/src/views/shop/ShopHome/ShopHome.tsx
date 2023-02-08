@@ -4,6 +4,7 @@ import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
 
 export default function ShopHome() {
   return (
+    <div className="ShopHome__mid">
     <div className="ShopHome__container">
       <ShopHeader />
       <div className="ShopHome__content">
@@ -17,6 +18,7 @@ export default function ShopHome() {
         <h1 style={{ color: "orange" }}>Welcome to Start!</h1>
       </div>
       <ShopBottomNav />
+    </div>
     </div>
   );
 }

@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width:100%;
 }
 
 .ShopHome-out{
@@ -16,3 +17,4 @@
   justify-content: center;
   align-items: center;
 }
+

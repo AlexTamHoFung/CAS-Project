@@ -2,7 +2,7 @@ import "./Login.css";
 import React, { useState } from "react";
 import { loginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export function Login() {
   const navigate = useNavigate();
@@ -54,12 +54,14 @@ export function Login() {
               className="Login__customerSubmit"
             ></input>
           </div>
-          <a href="/register" className="" style={{ color: "white" }}>
+          <Link to="/register" style={{ color: "white" }}>登記成爲會員</Link>
+          {/* <a href="/register" className="" style={{ color: "white" }}>
             登記成爲會員
-          </a>
-          <a href="/shop-login" className="" style={{ color: "white" }}>
+          </a> */}
+          <Link to="/shop-login" style={{ color: "white" }}>轉換至專業用戶</Link>
+          {/* <a href="/shop-login" className="" style={{ color: "white" }}>
             轉換至專業用戶
-          </a>
+          </a> */}
         </div>
       </form>
     </div>

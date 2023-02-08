@@ -1,6 +1,6 @@
 import "./Login.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import { shopLoginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
 
@@ -54,9 +54,10 @@ export default function ShopLogin() {
               className="Login__storeSubmit"
             ></input>
           </div>
-          <a href="/login" style={{ color: "white" }}>
+          <Link to="/login" style={{ color: "white" }}>轉換至普通用戶</Link>
+          {/* <a href="/login" style={{ color: "white" }}>
             轉換至普通用戶
-          </a>
+          </a> */}
         </div>
       </form>
     </div>

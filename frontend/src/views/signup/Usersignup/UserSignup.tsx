@@ -14,7 +14,7 @@ export default function UserSignup() {
          <input type="text" name="username" className="submitbox"/> <br/>
          *密碼:<br/>
          <input type="text" name="password" className="submitbox" /> <br/>
-         <a href="">忘記密碼?</a>
+         {/* <a href="">忘記密碼?</a> */}
 
         </label>
         <br/>

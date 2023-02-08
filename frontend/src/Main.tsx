@@ -2,6 +2,7 @@ import React from "react";
 import "./Main.css";
 import logo from './api/image/logo.png';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { Navigate, useNavigate } from "react-router-dom";
 // import { Login } from "./features/auth/Login";
 
@@ -32,7 +33,8 @@ export default function Home() {
       
 
       <div>
-        <a href="" className="shop-entry">切換至商戶專用頁面</a>
+        <Link to={"/"}  className="shop-entry">切換至商戶專用頁面</Link>
+        {/* <a href="" className="shop-entry">切換至商戶專用頁面</a> */}
       </div>
     </div>
   );

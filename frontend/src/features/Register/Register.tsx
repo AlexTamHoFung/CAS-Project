@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 // import { useEffect } from "react";
 import "./Register.css";
 import { useAppDispatch } from "../../app/hook";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 type FormValues = {
   name: string;
@@ -96,7 +96,9 @@ const Register = () => {
 
           <input type="submit" value="submit"/>
 
-          <a href="/login" style={{color:"white"}}>Back</a>
+
+          <Link to="/login" style={{ color: "white" }}>Back</Link>
+          {/* <a href="/login" style={{color:"white"}}>Back</a> */}
         </span>
       </form>
     </div>
