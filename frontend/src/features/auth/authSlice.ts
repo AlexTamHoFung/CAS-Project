@@ -62,7 +62,7 @@ export const loginThunk = createAsyncThunk<
     const JWT_token = await res.json();
     return JWT_token.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue("AUTH Login failed");
+    return thunkAPI.rejectWithValue(`${REACT_APP_API_BASE}/customers/login`);
   }
 });
 
