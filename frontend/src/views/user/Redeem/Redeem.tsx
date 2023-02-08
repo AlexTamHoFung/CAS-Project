@@ -36,7 +36,8 @@ export default function Redeem() {
     fetch(`${REACT_APP_API_BASE}/listings/getListing`)
       .then((resp) => resp.json())
       .then((data) => setCouponList(data));
-  }, [couponList]);
+  }, []);
+  
   return (
     <div>
       <UserHeader />

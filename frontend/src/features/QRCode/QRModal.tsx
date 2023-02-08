@@ -9,7 +9,7 @@ const MyQrReader: React.FC<{
   onLoad?: () => void;
   onImageLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
   delay: number | false | undefined;
-  facingMode?: "user" | "environment";
+  facingMode?: "environment";
   legacyMode?: boolean;
   resolution?: number;
   showViewFinder?: boolean;
