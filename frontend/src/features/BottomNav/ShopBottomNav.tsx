@@ -61,18 +61,18 @@ export default function ShopBottomNav() {
       onChange={handleChange}
     >
       <BottomNavigationAction
-        label="ShopHome"
+        label="主頁"
         value="shophome"
         icon={<HomeIcon />}
       />
 
       <BottomNavigationAction
-        label="ShopScan"
+        label="掃描"
         value="scan"
         icon={<QrCodeScannerIcon />}
       />
       <BottomNavigationAction
-        label="Redeem"
+        label="優惠券"
         value="redeem"
         icon={<RedeemIcon />}
       />

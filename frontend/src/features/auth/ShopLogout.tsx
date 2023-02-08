@@ -19,7 +19,7 @@ export default function Logout() {
       <div className="logout-bar">
         {isAuthenticated ? (
           <Button style={{color:"white", backgroundColor:"red"}}  onClick={clickLogout}>
-            Logout
+            登出
           </Button>
         ) : (
           ""

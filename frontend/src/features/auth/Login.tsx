@@ -24,11 +24,11 @@ export function Login() {
       <form onSubmit={submitHandler}>
         <div className="Login__headerTitle">
           <img src={require("./logo.png")} alt="logo" height={"80rem"} />
-          <h3>Login</h3>
+          <h3>登入</h3>
         </div>
         <div className="Login__formContent">
           <div className="Login__formRow">
-            <label htmlFor="username">Email</label>
+            <label htmlFor="username">電郵地址</label>
             <input
               id="email"
               type="text"
@@ -38,7 +38,7 @@ export function Login() {
             ></input>
           </div>
           <div className="Login__formRow">
-            <label htmlFor="username">Password</label>
+            <label htmlFor="username">密碼</label>
             <input
               id="password"
               type="password"
@@ -55,7 +55,7 @@ export function Login() {
             ></input>
           </div>
           <a href="/register" className="" style={{ color: "white" }}>
-            Register
+            登記成爲會員
           </a>
           <a href="/shop-login" className="" style={{ color: "white" }}>
             轉換至專業用戶

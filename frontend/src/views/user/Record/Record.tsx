@@ -66,11 +66,11 @@ const Record = () => {
           <Card key={index} style={{ marginBottom: 25 }}>
             <CardHeader
               title={trans.name.toUpperCase()}
-              subheader={`Collected Points: ${trans.amount}`}
+              subheader={`賺取DOL分: ${trans.amount}`}
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                Date: {moment(trans.transaction_date).format('LLL')}
+                交易日期: {moment(trans.transaction_date).format('LLL')}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {trans.payment_method}

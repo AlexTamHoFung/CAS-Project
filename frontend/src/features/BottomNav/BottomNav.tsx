@@ -66,19 +66,19 @@ export default function BottomNav() {
         value={value}
         onChange={handleChange}
       >
-        <BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
+        <BottomNavigationAction label="主頁" value="home" icon={<HomeIcon />} />
         <BottomNavigationAction
-          label="Record"
+          label="交易記錄"
           value="record"
           icon={<BarChartIcon />}
         />
         <BottomNavigationAction
-          label="Scan"
+          label="我的二維碼"
           value="scan"
           icon={<QrCodeScannerIcon />}
         />
         <BottomNavigationAction
-          label="Redeem"
+          label="我的優惠券"
           value="redeem"
           icon={<RedeemIcon />}
         />
