@@ -57,7 +57,9 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="fixed">
+
       <Container maxWidth="xl">
+        
         <Toolbar disableGutters>
           <Container className="Userheader__toolbar">
 
