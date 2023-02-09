@@ -17,6 +17,7 @@ const MyQrReader: React.FC<{
   videoStyle?: any;
   className?: string;
   onResult?: OnResultFunction;
+  constraints:any
 }> = QrReader as any;
 
 const style = {
@@ -62,6 +63,8 @@ const QRModal = ({ closeHandler, setResult }: QRModalProps) => {
         </Typography>
         {display && (
           <MyQrReader
+            key="user"
+            constraints={{ facingMode: 'user' }}
             delay={300}
             onError={(error: { message: SetStateAction<null> }) => {
               setError(error.message);

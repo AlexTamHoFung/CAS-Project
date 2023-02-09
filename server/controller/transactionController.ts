@@ -16,8 +16,8 @@ export class TransactionsController {
 			if (transactionResult.length > 0) {
 				res.json({ message: "found transaction", data: transactionResult });
 				return;
-			} else {
-				res.status(400).json({ message: "no such transaction" });
+			} else if (transactionResult.length = 0) {
+				res.json({ message: "no transaction" });
 			}
 		} catch (error) {
 			logger.error(error.message);
