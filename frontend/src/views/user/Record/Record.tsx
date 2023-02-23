@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, Container, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import UserHeader from "../../../components/userHeader/UserHeader";
 import BottomNav from "../../../features/BottomNav/BottomNav";
@@ -11,11 +17,11 @@ interface JWTPayload {
 }
 
 interface Transaction {
-    id: number;
-    name: string;
-    transaction_date: string;
-    amount: number;
-    payment_method: string
+  id: number;
+  name: string;
+  transaction_date: string;
+  amount: number;
+  payment_method: string;
 }
 
 const { REACT_APP_API_BASE } = process.env;
@@ -33,7 +39,7 @@ const Record = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bear ${token}`,
+          Authorization: `Bear ${token}`,
         },
         body: JSON.stringify({ uuid: payload.uuid }),
       });
@@ -41,27 +47,24 @@ const Record = () => {
       console.log("data", data.data);
 
       if (isMounted) {
-        setTransactions(data.data)
+        setTransactions(data.data);
       }
     };
     fetchData();
     return () => {
       isMounted = false;
     };
-  },[]
+  }, []);
 
-  )
-  console.log("is trans",transactions)
   return (
     <div>
       <UserHeader />
-        <br />
-        <br />
-        <br />
-
+      <br />
+      <br />
+      <br />
 
       <Container fixed>
-        <h2 style={{textAlign: "center"}}>交易紀錄</h2>
+        <h2 style={{ textAlign: "center" }}>交易紀錄</h2>
         {transactions.map((trans, index) => (
           <Card key={index} style={{ marginBottom: 25 }}>
             <CardHeader
@@ -70,7 +73,7 @@ const Record = () => {
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                交易日期: {moment(trans.transaction_date).format('LLL')}
+                交易日期: {moment(trans.transaction_date).format("LLL")}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {trans.payment_method}
@@ -79,15 +82,15 @@ const Record = () => {
           </Card>
         ))}
       </Container>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       <BottomNav />
     </div>
   );
-}
+};
 
-export default Record
+export default Record;

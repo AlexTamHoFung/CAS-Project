@@ -1,24 +1,38 @@
 import "./Login.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loginThunk } from "./authSlice";
 import { useAppDispatch } from "../../app/hook";
 import { useNavigate, Link } from "react-router-dom";
+
+// password length >= 8
 
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<Record<string, string | undefined>>({});
 
   const dispatch = useAppDispatch();
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(loginThunk({ email, password }))
-      .unwrap()
       .then(() => navigate("/"))
       .catch((err) => {
         alert(err);
       });
   };
+
+  // 1. useEffect(() => {})
+  // 2. useEffect(() => {}, []) -> componentDIdMount
+  // 3. useEffect(() => {}, [password])
+
+  useEffect(() => {
+    setError((error) => ({
+      ...error,
+      password: password.length >= 8 ? undefined : "invalid password length",
+    }));
+  }, [password]);
+
   return (
     <div className="Login__container Login__customer">
       <form onSubmit={submitHandler}>
@@ -31,7 +45,7 @@ export function Login() {
             <label htmlFor="username">電郵地址</label>
             <input
               id="email"
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -46,6 +60,7 @@ export function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
             ></input>
+            {error.password && <p>{error.password}</p>}
           </div>
           <div className="Login__formRow">
             <input
@@ -54,14 +69,12 @@ export function Login() {
               className="Login__customerSubmit"
             ></input>
           </div>
-          <Link to="/register" style={{ color: "white" }}>登記成爲會員</Link>
-          {/* <a href="/register" className="" style={{ color: "white" }}>
+          <Link to="/register" style={{ color: "white" }}>
             登記成爲會員
-          </a> */}
-          <Link to="/shop-login" style={{ color: "white" }}>轉換至專業用戶</Link>
-          {/* <a href="/shop-login" className="" style={{ color: "white" }}>
+          </Link>
+          <Link to="/shop-login" style={{ color: "white" }}>
             轉換至專業用戶
-          </a> */}
+          </Link>
         </div>
       </form>
     </div>

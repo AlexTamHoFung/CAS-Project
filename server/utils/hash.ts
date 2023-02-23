@@ -7,7 +7,7 @@ const SALT_ROUNDS = 10;
  */
 export async function hashPassword(plainPassword: string) {
 	const hash: string = await bcrypt.hash(plainPassword, SALT_ROUNDS);
-	console.log(hash)
+	console.log(hash);
 	return hash;
 }
 

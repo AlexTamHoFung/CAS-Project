@@ -39,7 +39,7 @@ export interface Stores {
 }
 
 export interface Admins {
-	id:number;
+	id: number;
 	username: string;
 	password: string;
 }
@@ -84,7 +84,7 @@ export interface Points {
 	amount: number;
 	point_type: string;
 	transaction_date: string;
-	uuid: string,
+	uuid: string;
 	customer_id: number;
 }
 

@@ -30,18 +30,15 @@ export class TransactionsService {
 			is_refund,
 			store_user_id
 		};
-		console.log(insertData)
+		console.log(insertData);
 
 		if (!collect_point) {
-			await this.dbClient("transactions")
-				.insert(insertData)
-				.returning("id");
+			await this.dbClient("transactions").insert(insertData).returning("id");
 		} else {
 			const customer = await this.dbClient<Transactions>("customers")
 				.select("id")
 				.where("uuid", uuid)
 				.first();
-			console.log(customer);
 			insertData["customer_id"] = customer!.id;
 			await this.dbClient("transactions").insert(insertData);
 		}

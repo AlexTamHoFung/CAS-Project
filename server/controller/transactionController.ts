@@ -4,7 +4,10 @@ import { TransactionsService } from "../service/transactionsService";
 import { PointsService } from "../service/pointsService";
 
 export class TransactionsController {
-	constructor(private transactionsService: TransactionsService, private pointService: PointsService) {}
+	constructor(
+		private transactionsService: TransactionsService,
+		private pointService: PointsService
+	) {}
 
 	getTransaction = async (req: Request, res: Response) => {
 		try {
@@ -16,7 +19,7 @@ export class TransactionsController {
 			if (transactionResult.length > 0) {
 				res.json({ message: "found transaction", data: transactionResult });
 				return;
-			} else if (transactionResult.length = 0) {
+			} else if ((transactionResult.length = 0)) {
 				res.json({ message: "no transaction" });
 			}
 		} catch (error) {

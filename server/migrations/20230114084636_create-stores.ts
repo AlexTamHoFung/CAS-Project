@@ -17,3 +17,5 @@ export async function up(knex: Knex): Promise<void> {
 export async function down(knex: Knex): Promise<void> {
 	await knex.schema.dropTable("store_users");
 }
+
+// customer 1-1 account 1-1 store

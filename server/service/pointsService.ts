@@ -10,12 +10,8 @@ export class PointsService {
 		return getPoints;
 	}
 
-	async addPoint(
-		amount: number,
-		point_type: string,
-		uuid: string
-	) {
-		let insertData: any = { amount, point_type, transaction_date:new Date() };
+	async addPoint(amount: number, point_type: string, uuid: string) {
+		let insertData: any = { amount, point_type, transaction_date: new Date() };
 		const customer = await this.dbClient<{ id: number }>("customers")
 			.select("id")
 			.where("uuid", uuid)

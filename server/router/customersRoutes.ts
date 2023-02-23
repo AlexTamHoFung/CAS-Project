@@ -7,5 +7,7 @@ export const customersRoutes = express.Router();
 customersRoutes.post("/register", asyncWrapper(customersController.register));
 // customersRoutes.get("/getcustomer", asyncWrapper(customersController.getCustomerByPhone));
 customersRoutes.post("/login", asyncWrapper(customersController.login));
-customersRoutes.get("/getcustomerid", asyncWrapper(customersController.getCustomerIdByUUID));
-
+customersRoutes.get(
+	"/getcustomerid",
+	asyncWrapper(customersController.getCustomerIdByUUID)
+);
