@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-// import { useEffect } from "react";
 import "./Register.css";
-import { useAppDispatch } from "../../app/hook";
+
 import { useNavigate, Link } from "react-router-dom";
 
 type FormValues = {
@@ -10,8 +9,6 @@ type FormValues = {
   password: string;
   phone: string;
 };
-
-
 
 const Register = () => {
   const {
@@ -28,14 +25,12 @@ const Register = () => {
   register("password", { required: true, minLength: 6 });
   register("phone", { required: true, minLength: 8, maxLength: 8 });
 
-  const dispatch = useAppDispatch();
   const submitHandler = async (data: FormValues) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("password", data.password);
     formData.append("email", data.email);
     formData.append("phone", data.phone);
-    // async (data) => {
     console.log("formdata: ", data);
     const { REACT_APP_API_BASE } = process.env;
     const jsonData = {
@@ -53,7 +48,7 @@ const Register = () => {
     });
     const respData = await resp.json();
     console.log("respData: ", respData);
-    navigate("/")
+    navigate("/");
     // }
   };
 
@@ -76,7 +71,10 @@ const Register = () => {
           <p>
             <label>Password </label>
             <br />
-            <input type="text" {...register("password", { required: true, minLength: 6 })} />
+            <input
+              type="text"
+              {...register("password", { required: true, minLength: 6 })}
+            />
             {errors.password && <p className="error">Minimun length is 6</p>}
           </p>
 
@@ -90,15 +88,22 @@ const Register = () => {
           <p>
             <label>PhoneNumber </label>
             <br />
-            <input type="integer" {...register("phone", { required: true, minLength: 8, maxLength: 8  })} />
+            <input
+              type="integer"
+              {...register("phone", {
+                required: true,
+                minLength: 8,
+                maxLength: 8,
+              })}
+            />
             {errors.phone && <p className="error">Not valid phone number</p>}
           </p>
 
-          <input type="submit" value="submit"/>
+          <input type="submit" value="submit" />
 
-
-          <Link to="/login" style={{ color: "white" }}>Back</Link>
-          {/* <a href="/login" style={{color:"white"}}>Back</a> */}
+          <Link to="/login" style={{ color: "white" }}>
+            Back
+          </Link>
         </span>
       </form>
     </div>

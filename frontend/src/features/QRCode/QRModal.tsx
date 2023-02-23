@@ -1,5 +1,4 @@
-import { Box } from "@mui/material";
-import { Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 import { SetStateAction, useEffect, useState } from "react";
 import { QrReader, OnResultFunction } from "react-qr-reader";
 import  "./QRModal.css"

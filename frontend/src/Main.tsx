@@ -1,15 +1,9 @@
-import React from "react";
 import "./Main.css";
-import logo from './api/image/logo.png';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-// import { Navigate, useNavigate } from "react-router-dom";
-// import { Login } from "./features/auth/Login";
-
+import logo from "./api/image/logo.png";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Home() {
   let navigate = useNavigate();
-
 
   return (
     <div>
@@ -19,22 +13,21 @@ export default function Home() {
       </div>
 
       <div className="logo">
-        <img src= {logo} alt='logo' />
+        <img src={logo} alt="logo" />
       </div>
-      
-      
+
       <div className="homebutton">
-        <button className="register-button">Register
-        </button>
+        <button className="register-button">Register</button>
         <br />
-        <button className="signup-button" onClick={() => navigate("/login")} >Sign in
+        <button className="signup-button" onClick={() => navigate("/login")}>
+          Sign in
         </button>
       </div>
-      
 
       <div>
-        <Link to={"/"}  className="shop-entry">切換至商戶專用頁面</Link>
-        {/* <a href="" className="shop-entry">切換至商戶專用頁面</a> */}
+        <Link to={"/"} className="shop-entry">
+          切換至商戶專用頁面
+        </Link>
       </div>
     </div>
   );

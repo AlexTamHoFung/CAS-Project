@@ -18,9 +18,7 @@ import { useEffect, useState } from "react";
 import QRModal from "./QRModal";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
 import ShopHeader from "../../components/shopHeader/ShopHeader";
-
 
 interface TransPT {
   amount: string;
@@ -34,7 +32,6 @@ const { REACT_APP_API_BASE } = process.env;
 const MySwal = withReactContent(Swal);
 
 const ScanQR = () => {
-  const navigate = useNavigate();
   const [modalDisplay, setModalDisplay] = useState(false);
   const [result, setResult] = useState("");
   const [transInput, setTransInput] = useState<TransPT>({
@@ -68,18 +65,16 @@ const ScanQR = () => {
       MySwal.fire({
         title: <p>交易完成</p>,
       }).then(() => {
-        window.location.reload()
+        window.location.reload();
       });
-    } else  {
+    } else {
       MySwal.fire({
         title: <p>交易失敗，請重新進行輸入</p>,
       }).then(() => {
-        window.location.reload()
+        window.location.reload();
       });
-    };
-  }
-
-
+    }
+  };
 
   useEffect(() => {
     setModalDisplay(transInput.collect_point === "true");
