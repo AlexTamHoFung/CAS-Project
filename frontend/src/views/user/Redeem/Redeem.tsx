@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 
 import Container from "@mui/material/Container";
 import BottomNav from "../../../features/BottomNav/BottomNav";
-import UserHeader from "../../../components/userHeader/UserHeader";
+import UserHeader from "../../../components/userheader/UserHeader";
 import { Typography } from "@mui/material";
 
 interface Coupon {

@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import QRModal from "./QRModal";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import ShopHeader from "../../components/shopHeader/ShopHeader";
+import ShopHeader from "../../components/shopheader/ShopHeader";
 
 interface TransPT {
   amount: string;

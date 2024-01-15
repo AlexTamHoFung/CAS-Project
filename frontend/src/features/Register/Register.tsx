@@ -2,8 +2,10 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 
 import { useNavigate, Link } from "react-router-dom";
+import { registerThunk } from "../auth/authSlice";
+import { useAppDispatch } from "../../app/hook";
 
-type FormValues = {
+export type RegisterFormValues = {
   name: string;
   email: string;
   password: string;
@@ -11,11 +13,12 @@ type FormValues = {
 };
 
 const Register = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<RegisterFormValues>({
     defaultValues: { name: "", email: "", password: "", phone: "" },
   });
   const navigate = useNavigate();
@@ -25,31 +28,8 @@ const Register = () => {
   register("password", { required: true, minLength: 6 });
   register("phone", { required: true, minLength: 8, maxLength: 8 });
 
-  const submitHandler = async (data: FormValues) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("password", data.password);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    console.log("formdata: ", data);
-    const { REACT_APP_API_BASE } = process.env;
-    const jsonData = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      phone: data.phone,
-    };
-    const resp = await fetch(`${REACT_APP_API_BASE}/customers/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(jsonData),
-    });
-    const respData = await resp.json();
-    console.log("respData: ", respData);
-    navigate("/");
-    // }
+  const submitHandler = async (data: RegisterFormValues) => {
+    dispatch(registerThunk(data)).then(() => navigate("/"));
   };
 
   return (
@@ -72,7 +52,7 @@ const Register = () => {
             <label>Password </label>
             <br />
             <input
-              type="text"
+              type="password"
               {...register("password", { required: true, minLength: 6 })}
             />
             {errors.password && <p className="error">Minimun length is 6</p>}
@@ -81,7 +61,7 @@ const Register = () => {
           <p>
             <label>Email </label>
             <br />
-            <input type="text" {...register("email", { required: true })} />
+            <input type="email" {...register("email", { required: true })} />
             {errors.email && <p className="error">Email is required</p>}
           </p>
 

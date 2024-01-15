@@ -1,13 +1,10 @@
-import "./App.css";
 
-import Header from "./features/Header/Header";
 import { Routes, Route } from "react-router-dom";
 
 import { Login } from "./features/auth/Login";
 import PrivateRoute from "./features/auth/PrivateRoute";
 
 import Home from "./views/user/Home/Home";
-// import Profile from "./views/user/Profile/Profile";
 import ScanQR from "./features/QRCode/ScanQR";
 import Redeem from "./views/user/Redeem/Redeem";
 import Record from "./views/user/Record/Record";
@@ -21,16 +18,12 @@ import ShopLogin from "./features/auth/ShopLogin";
 import Register from "./features/Register/Register";
 import ShopLogout from "./features/auth/ShopLogout";
 
-
-
-
 export default function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route element={<Home />} index />
-          {/* <Route path="profile" element={<Profile />} /> */}
           <Route path="record" element={<Record />} />
           <Route path="redeem" element={<Redeem />} />
           <Route path="displayQR" element={<DisplayQR />} />

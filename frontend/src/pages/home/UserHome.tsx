@@ -4,7 +4,7 @@ import "./UserHome.css";
 
 import { Layout, Input, Button } from "antd";
 import {useParams, useLocation, useNavigate} from "react-router-dom"
-import UserHeader from "../../components/userHeader/UserHeader";
+import UserHeader from "../../components/userheader/UserHeader";
 
 export default function UserHome() {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import ShopHeader from "../../../components/shopHeader/ShopHeader";
+import ShopHeader from "../../../components/shopheader/ShopHeader";
 
 import ShopBottomNav from "../../../features/BottomNav/ShopBottomNav";
 
